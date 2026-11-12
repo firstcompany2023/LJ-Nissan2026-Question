@@ -46,7 +46,7 @@ h2 {
     margin-bottom: 23px;
 }
 
-.form-group > label {
+.form-group > label:first-child {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
@@ -80,6 +80,7 @@ input:focus {
     background: #f7f7f7;
     border-radius: 7px;
     cursor: pointer;
+    font-weight: normal;
 }
 
 .option input {
@@ -87,6 +88,13 @@ input:focus {
     height: 18px;
     accent-color: #c3002f;
     cursor: pointer;
+    flex-shrink: 0;
+}
+
+.hint {
+    color: #888;
+    font-size: 13px;
+    margin: -3px 0 10px;
 }
 
 button {
@@ -155,7 +163,7 @@ button:disabled {
             target="hidden_iframe"
         >
 
-            <!-- 姓名 -->
+            <!-- 1. 姓名 -->
             <div class="form-group">
 
                 <label>
@@ -172,7 +180,7 @@ button:disabled {
             </div>
 
 
-            <!-- 性別 -->
+            <!-- 2. 性別 -->
             <div class="form-group">
 
                 <label>
@@ -181,7 +189,7 @@ button:disabled {
 
                 <label class="option">
                     <input
-                        type="checkbox"
+                        type="radio"
                         name="entry.1228242096"
                         value="先生"
                         required
@@ -191,7 +199,7 @@ button:disabled {
 
                 <label class="option">
                     <input
-                        type="checkbox"
+                        type="radio"
                         name="entry.1228242096"
                         value="小姐"
                     >
@@ -201,7 +209,7 @@ button:disabled {
             </div>
 
 
-            <!-- 聯繫方式 -->
+            <!-- 3. 聯繫方式 -->
             <div class="form-group">
 
                 <label>
@@ -218,19 +226,20 @@ button:disabled {
             </div>
 
 
-            <!-- 興趣車款 -->
+            <!-- 4. 興趣車款：複選 -->
             <div class="form-group">
 
                 <label>
                     興趣車款 <span class="required">*</span>
                 </label>
 
+                <div class="hint">可複選</div>
+
                 <label class="option">
                     <input
                         type="checkbox"
                         name="entry.1404847317"
                         value="e-POWER QASHQAI"
-                        required
                     >
                     e-POWER QASHQAI
                 </label>
@@ -247,19 +256,20 @@ button:disabled {
             </div>
 
 
-            <!-- 聯絡時間 -->
+            <!-- 5. 聯絡時間：複選 -->
             <div class="form-group">
 
                 <label>
                     聯絡時間 <span class="required">*</span>
                 </label>
 
+                <div class="hint">可複選</div>
+
                 <label class="option">
                     <input
                         type="checkbox"
                         name="entry.610181726"
                         value="08:00-12:00"
-                        required
                     >
                     08:00-12:00
                 </label>
@@ -294,6 +304,24 @@ button:disabled {
             </div>
 
 
+            <!-- 6. 驗證碼 -->
+            <div class="form-group">
+
+                <label>
+                    聯繫據點 <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    name="entry.19051359"
+                    placeholder="請輸入驗證碼"
+                    required
+                >
+
+            </div>
+
+
+            <!-- 送出按鈕 -->
             <button type="submit" id="submitBtn">
                 送出資料
             </button>
@@ -328,7 +356,7 @@ button:disabled {
 </div>
 
 
-<!-- 隱藏 iframe -->
+<!-- 隱藏 Google Forms iframe -->
 <iframe
     name="hidden_iframe"
     id="hidden_iframe"
@@ -347,13 +375,38 @@ const iframe = document.getElementById("hidden_iframe");
 const submitBtn = document.getElementById("submitBtn");
 
 
-// 送出表單
-form.addEventListener("submit", function() {
+// 表單送出前檢查
+form.addEventListener("submit", function(e) {
 
+    // 防止重複送出
     if (submitted) {
+        e.preventDefault();
         return;
     }
 
+    // 檢查興趣車款至少勾選一個
+    const carChecked = form.querySelectorAll(
+        'input[name="entry.1404847317"]:checked'
+    ).length;
+
+    // 檢查聯絡時間至少勾選一個
+    const timeChecked = form.querySelectorAll(
+        'input[name="entry.610181726"]:checked'
+    ).length;
+
+    if (carChecked === 0) {
+        e.preventDefault();
+        alert("請至少選擇一個興趣車款！");
+        return;
+    }
+
+    if (timeChecked === 0) {
+        e.preventDefault();
+        alert("請至少選擇一個聯絡時間！");
+        return;
+    }
+
+    // 開始送出
     submitted = true;
 
     submitBtn.disabled = true;
@@ -372,10 +425,13 @@ iframe.addEventListener("load", function() {
 
     submitted = false;
 
+    // 隱藏表單
     document.getElementById("formArea").style.display = "none";
 
+    // 顯示成功畫面
     document.getElementById("success").style.display = "block";
 
+    // 回到頁面頂端
     window.scrollTo({
         top: 0,
         behavior: "smooth"
