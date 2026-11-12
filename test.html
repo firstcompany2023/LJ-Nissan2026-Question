@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NISSAN e-POWER 客戶登記表</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 15px;
+    font-family: Arial, "Noto Sans TC", sans-serif;
+    background: #f3f5f8;
+    color: #222;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 14px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.07);
+}
+
+h2 {
+    text-align: center;
+    margin: 0 0 10px;
+    font-size: 23px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+.form-group > label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.required {
+    color: #e53935;
+}
+
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    height: 46px;
+    padding: 0 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #c3002f;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #f7f7f7;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.option input {
+    width: 18px;
+    height: 18px;
+    accent-color: #c3002f;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    background: #c3002f;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+#success {
+    display: none;
+    text-align: center;
+    padding: 35px 10px;
+}
+
+.success-icon {
+    font-size: 55px;
+    color: #28a745;
+}
+
+#success h2 {
+    color: #28a745;
+    margin: 15px 0;
+}
+
+#success p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.reset-btn {
+    margin-top: 20px;
+    background: #333;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- 表單區域 -->
+    <div id="formArea">
+
+        <h2>NISSAN e-POWER</h2>
+
+        <div class="subtitle">
+            客戶資料登記表
+        </div>
+
+        <form
+            id="customerForm"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSd_eg3Pp9bJfD46lDAycL2wkK8pYTpHKlAlI1NrYpHI7IybbQ/formResponse"
+            method="POST"
+            target="hidden_iframe"
+        >
+
+            <!-- 姓名 -->
+            <div class="form-group">
+
+                <label>
+                    姓名 <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    name="entry.882057871"
+                    placeholder="請輸入姓名"
+                    required
+                >
+
+            </div>
+
+
+            <!-- 性別 -->
+            <div class="form-group">
+
+                <label>
+                    性別 <span class="required">*</span>
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="entry.1228242096"
+                        value="先生"
+                        required
+                    >
+                    先生
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="entry.1228242096"
+                        value="小姐"
+                    >
+                    小姐
+                </label>
+
+            </div>
+
+
+            <!-- 聯繫方式 -->
+            <div class="form-group">
+
+                <label>
+                    聯繫方式 <span class="required">*</span>
+                </label>
+
+                <input
+                    type="tel"
+                    name="entry.199210044"
+                    placeholder="請輸入聯絡電話"
+                    required
+                >
+
+            </div>
+
+
+            <!-- 興趣車款 -->
+            <div class="form-group">
+
+                <label>
+                    興趣車款 <span class="required">*</span>
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="entry.1404847317"
+                        value="e-POWER QASHQAI"
+                        required
+                    >
+                    e-POWER QASHQAI
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="entry.1404847317"
+                        value="e-POWER X-TRAIL"
+                    >
+                    e-POWER X-TRAIL
+                </label>
+
+            </div>
+
+
+            <!-- 聯絡時間 -->
+            <div class="form-group">
+
+                <label>
+                    聯絡時間 <span class="required">*</span>
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="entry.610181726"
+                        value="08:00-12:00"
+                        required
+                    >
+                    08:00-12:00
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="entry.610181726"
+                        value="12:00-15:00"
+                    >
+                    12:00-15:00
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="entry.610181726"
+                        value="15:00-18:00"
+                    >
+                    15:00-18:00
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="entry.610181726"
+                        value="18:00-20:00"
+                    >
+                    18:00-20:00
+                </label>
+
+            </div>
+
+
+            <button type="submit" id="submitBtn">
+                送出資料
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- 成功畫面 -->
+    <div id="success">
+
+        <div class="success-icon">✓</div>
+
+        <h2>資料已成功送出！</h2>
+
+        <p>
+            感謝您的填寫。<br>
+            NISSAN e-POWER 將盡快與您聯繫。
+        </p>
+
+        <button
+            class="reset-btn"
+            type="button"
+            onclick="resetForm()"
+        >
+            返回填寫
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- 隱藏 iframe -->
+<iframe
+    name="hidden_iframe"
+    id="hidden_iframe"
+    style="display:none;"
+></iframe>
+
+
+<script>
+
+let submitted = false;
+
+const form = document.getElementById("customerForm");
+
+const iframe = document.getElementById("hidden_iframe");
+
+const submitBtn = document.getElementById("submitBtn");
+
+
+// 送出表單
+form.addEventListener("submit", function() {
+
+    if (submitted) {
+        return;
+    }
+
+    submitted = true;
+
+    submitBtn.disabled = true;
+
+    submitBtn.innerText = "資料送出中...";
+
+});
+
+
+// 監聽 iframe 載入
+iframe.addEventListener("load", function() {
+
+    if (!submitted) {
+        return;
+    }
+
+    submitted = false;
+
+    document.getElementById("formArea").style.display = "none";
+
+    document.getElementById("success").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+
+// 重新填寫
+function resetForm() {
+
+    form.reset();
+
+    document.getElementById("success").style.display = "none";
+
+    document.getElementById("formArea").style.display = "block";
+
+    submitBtn.disabled = false;
+
+    submitBtn.innerText = "送出資料";
+
+}
+
+</script>
+
+</body>
+</html>
