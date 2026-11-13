@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NISSAN</title>
     <meta name="description" content="NISSAN ">
@@ -134,7 +135,8 @@
         }
 
         .submit-button:disabled {
-            filter: grayscale(0.4) brightness(0.9);
+            filter: grayscale(0.8) brightness(0.8);
+            opacity: 0.8;
             cursor: not-allowed;
         }
 
@@ -531,6 +533,7 @@
             line-height: 1.6;
             text-align: center;
             color: #65746E;
+            white-space: pre-line;
         }
 
         .modal--alert .modal-foot {
@@ -664,8 +667,8 @@
             /* 聯絡時間：2 x 2 對齊 */
             .choice-group--grid {
                 display: grid;
-                grid-template-columns: 118px 1fr;
-                gap: 32px 0;
+                grid-template-columns: 140px 1fr;
+                gap: 20px 0;
             }
 
             /* 縣市 / 營業所：上下排列 */
@@ -754,25 +757,21 @@
             <p class="text-4xl font-bold text-[#173F35] mb-[10px]">購車諮詢</p>
             <p class="text-sm text-[#65746E]">填寫您的聯繫資訊與感興趣車款，銷售顧問將於您方便的時間聯繫您。</p>
             <hr class="my-6 border-[#DDE2DD]" />
-            <form id="contact-form" class="" accept="" method="post" action="/" novalidate>
-
-                <!-- 姓名 / 稱謂 -->
+            <form id="contact-form" method="post" action="https://docs.google.com/forms/d/e/1FAIpQLSd_eg3Pp9bJfD46lDAycL2wkK8pYTpHKlAlI1NrYpHI7IybbQ/formResponse" novalidate>
                 <div class="form-group">
                     <label for="name" class="form-label">姓名<span class="req" aria-hidden="true">*</span></label>
                     <div class="name-row">
                         <div class="field" data-field="name">
                             <input type="text" id="name" name="name" class="form-control" placeholder="請輸入姓名"
-                                autocomplete="name" maxlength="30" required aria-describedby="name-error">
+                                autocomplete="name" maxlength="100" required aria-describedby="name-error">
                             <p class="error-msg" id="name-error" role="alert">此為必填欄位</p>
                         </div>
                         <div class="radio-group" role="radiogroup" aria-label="稱謂">
-                            <label class="choice"><input type="radio" name="gender" value="先生">先生</label>
+                            <label class="choice"><input type="radio" name="gender" value="先生" checked>先生</label>
                             <label class="choice"><input type="radio" name="gender" value="小姐">小姐</label>
                         </div>
                     </div>
                 </div>
-
-                <!-- 手機號碼 -->
                 <div class="form-group">
                     <label for="phone1" class="form-label">手機號碼<span class="req" aria-hidden="true">*</span><span
                             class="hint">請輸入可聯繫之手機號碼</span></label>
@@ -789,8 +788,6 @@
                         <p class="error-msg" id="phone-error" role="alert">此為必填欄位</p>
                     </div>
                 </div>
-
-                <!-- 興趣車款 -->
                 <div class="form-group">
                     <span class="form-label" id="label-models">興趣車款<span class="req"
                             aria-hidden="true">*</span><span class="hint">可複選</span></span>
@@ -804,8 +801,6 @@
                         <p class="error-msg" role="alert">此為必填欄位</p>
                     </div>
                 </div>
-
-                <!-- 聯絡時間 -->
                 <div class="form-group">
                     <span class="form-label" id="label-times">聯絡時間<span class="req"
                             aria-hidden="true">*</span><span class="hint">可複選</span></span>
@@ -819,8 +814,6 @@
                         <p class="error-msg" role="alert">此為必填欄位</p>
                     </div>
                 </div>
-
-                <!-- 聯繫據點 -->
                 <div class="form-group">
                     <span class="form-label" id="label-location">聯繫據點<span class="req"
                             aria-hidden="true">*</span><a href="#" id="branch-info-link" target="_blank"
@@ -842,28 +835,23 @@
                         </div>
                     </div>
                 </div>
-
                 <hr class="form-divider" />
-
-                <!-- 個資同意 -->
                 <div class="consent-group field" data-field="agree">
                     <label class="choice">
                         <input type="checkbox" id="agree" name="agree" value="1" required
                             aria-describedby="agree-error">
-                        <span>我已閱讀並同意個資授權<a href="#privacy-modal" id="privacy-link" role="button"
+                        <span style="letter-spacing: 0;">我已閱讀並同意個資授權<a href="#privacy-modal" id="privacy-link" role="button"
                                 aria-haspopup="dialog">（個資授權告知事項）</a></span>
                     </label>
                     <p class="error-msg" id="agree-error" role="alert">請閱讀並同意個資授權</p>
                 </div>
-
-                <button type="submit" class="submit-button" id="submit-btn">
+                <button type="submit" class="submit-button" id="submit-btn" disabled>
                     確認送出
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- 彈窗：個資授權告知事項 -->
     <dialog id="privacy-modal" class="modal" aria-labelledby="privacy-title">
         <div class="modal-head">
             <h2 class="modal-title" id="privacy-title">個資授權告知事項</h2>
@@ -886,7 +874,6 @@
         </div>
     </dialog>
 
-    <!-- 彈窗：訊息提示（送出結果 / 錯誤） -->
     <dialog id="alert-modal" class="modal modal--alert" aria-describedby="alert-message">
         <p class="modal-message" id="alert-message"></p>
         <div class="modal-foot">
@@ -1010,8 +997,7 @@
             // TVC 影片播放與結束切換封面圖
             const tvcVideo = document.getElementById('tvc-video');
             const tvdImgCover = document.getElementById('tvd-img-cover');
-            console.log('TVC Video Element:', tvcVideo);
-            console.log('TVC Cover Image Element:', tvdImgCover);
+
             if (tvcVideo && tvdImgCover) {
                 // 確保靜音屬性以符合瀏覽器自動播放政策 (Autoplay Policy)
                 tvcVideo.muted = true;
@@ -1045,9 +1031,13 @@
 
                 // 播放完畢切換：隱藏影片、顯示封面圖
                 tvcVideo.addEventListener('ended', () => {
-                    console.log('TVC video ended, switching to cover image.');
                     tvcVideo.style.display = 'none';
                     tvdImgCover.classList.remove('hidden');
+
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' , });
+                    }
                 });
             }
 
@@ -1181,36 +1171,102 @@
                 el.branch.disabled = list.length === 0;
                 clearError('city');
                 clearError('branch');
+                updateSubmitState();
             });
 
-            /* ---------- 手機：僅數字、前四碼滿後自動跳下一格 ---------- */
-            [el.phone1, el.phone2].forEach(input => {
-                input.addEventListener('input', () => {
-                    input.value = input.value.replace(/\D/g, '');
-                    clearError('phone');
-                    if (input === el.phone1 && input.value.length === 4) el.phone2.focus();
-                });
+            /* ---------- 即時檢查所有欄位狀態並控制按鈕啟用/禁用 ---------- */
+            function isFormValid() {
+                const nameVal = el.name.value.trim();
+                if (!nameVal || nameVal.length > 100) return false;
+                const p1 = el.phone1.value.trim();
+                const p2 = el.phone2.value.trim();
+                if (!/^0\d{3}$/.test(p1) || !/^\d{6}$/.test(p2)) return false;
+                if (!form.querySelector('input[name="models"]:checked')) return false;
+                if (!form.querySelector('input[name="times"]:checked')) return false;
+                if (!el.city.value || !el.branch.value) return false;
+                if (!el.agree.checked) return false;
+
+                return true;
+            }
+
+            function updateSubmitState() {
+                if (el.submit) {
+                    el.submit.disabled = !isFormValid();
+                }
+            }
+
+            el.name.addEventListener('input', () => {
+                if (el.name.value.length > 100) {
+                    el.name.value = el.name.value.slice(0, 100);
+                }
+                clearError('name');
+                updateSubmitState();
             });
 
-            /* ---------- 其他欄位輸入時清除錯誤 ---------- */
-            el.name.addEventListener('input', () => clearError('name'));
-            el.branch.addEventListener('change', () => clearError('branch'));
-            form.querySelectorAll('input[name="models"]').forEach(i => i.addEventListener('change', () => clearError('models')));
-            form.querySelectorAll('input[name="times"]').forEach(i => i.addEventListener('change', () => clearError('times')));
-            el.agree.addEventListener('change', () => clearError('agree'));
+            el.phone1.addEventListener('input', () => {
+                let val = el.phone1.value.replace(/\D/g, '');
+                if (val.length > 0 && !val.startsWith('0')) {
+                    const firstZeroIndex = val.indexOf('0');
+                    val = firstZeroIndex !== -1 ? val.slice(firstZeroIndex) : '';
+                }
+                if (val.length > 4) val = val.slice(0, 4);
+                el.phone1.value = val;
+
+                clearError('phone');
+                updateSubmitState();
+                if (val.length === 4) {
+                    el.phone2.focus();
+                }
+            });
+
+            el.phone2.addEventListener('input', () => {
+                let val = el.phone2.value.replace(/\D/g, '');
+                if (val.length > 6) val = val.slice(0, 6);
+                el.phone2.value = val;
+
+                clearError('phone');
+                updateSubmitState();
+            });
+
+            el.branch.addEventListener('change', () => {
+                clearError('branch');
+                updateSubmitState();
+            });
+
+            form.querySelectorAll('input[name="models"]').forEach(i => i.addEventListener('change', () => {
+                clearError('models');
+                updateSubmitState();
+            }));
+
+            form.querySelectorAll('input[name="times"]').forEach(i => i.addEventListener('change', () => {
+                clearError('times');
+                updateSubmitState();
+            }));
+
+            el.agree.addEventListener('change', () => {
+                clearError('agree');
+                updateSubmitState();
+            });
+
+            updateSubmitState();
 
             /* ---------- 驗證 ---------- */
             function validate() {
-                const errors = []; // [key, focusTarget]
+                const errors = []; // [key, focusTarget, msg]
 
-                if (!el.name.value.trim()) errors.push(['name', el.name, '此為必填欄位']);
+                const nameVal = el.name.value.trim();
+                if (!nameVal) {
+                    errors.push(['name', el.name, '此為必填欄位']);
+                } else if (nameVal.length > 100) {
+                    errors.push(['name', el.name, '姓名不可超過100字']);
+                }
 
                 const p1 = el.phone1.value.trim();
                 const p2 = el.phone2.value.trim();
                 if (!p1 || !p2) {
                     errors.push(['phone', !p1 ? el.phone1 : el.phone2, '此為必填欄位']);
-                } else if (!/^09\d{2}$/.test(p1) || !/^\d{6}$/.test(p2)) {
-                    errors.push(['phone', !/^09\d{2}$/.test(p1) ? el.phone1 : el.phone2, '請輸入正確的手機號碼']);
+                } else if (!/^0\d{3}$/.test(p1) || !/^\d{6}$/.test(p2)) {
+                    errors.push(['phone', !/^0\d{3}$/.test(p1) ? el.phone1 : el.phone2, '請輸入正確的手機號碼（前4碼需為0開頭，後6碼為數字）']);
                 }
 
                 if (!form.querySelector('input[name="models"]:checked'))
@@ -1248,7 +1304,6 @@
 
             document.querySelectorAll('dialog.modal').forEach(dialog => {
                 dialog.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', () => closeModal(dialog)));
-                // 點擊遮罩關閉
                 dialog.addEventListener('click', (e) => { if (e.target === dialog) closeModal(dialog); });
                 dialog.addEventListener('close', () => {
                     if (!document.querySelector('dialog.modal[open]')) root.classList.remove('html-lock');
@@ -1273,25 +1328,39 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
-                showAlert('送出失敗，請稍後再試！');
-
                 if (!validate()) return;
-
+                
                 const data = new FormData(form);
+
+                ['models', 'times'].forEach(fieldName => {
+                    const checkedValues = Array.from(form.querySelectorAll(`input[name="${fieldName}"]:checked`)).map(i => i.value);
+                    data.set(fieldName, checkedValues.join('、'));
+                });
+
                 el.submit.disabled = true;
                 try {
-                    // TODO: 依後端規格調整送出方式與欄位
-                    const res = await fetch(form.getAttribute('action') || '/', { method: 'POST', body: data });
+                    
+                    const sheetData = new FormData();
+                    sheetData.append('entry.882057871', data.get('name'));
+                    sheetData.append('entry.1228242096', data.get('gender'));
+                    sheetData.append('entry.199210044', data.get('phone1') + data.get('phone2'));
+                    sheetData.append('entry.1404847317', data.get('models'));
+                    sheetData.append('entry.610181726', data.get('times'));
+                    sheetData.append('entry.19051359', data.get('city') + ' ' + data.get('branch'));
+
+
+                    const res = await fetch(form.getAttribute('action') || '/', { method: 'POST', body: sheetData });
                     if (!res.ok) throw new Error('HTTP ' + res.status);
                     form.reset();
                     el.branch.length = 1;
                     el.branch.disabled = true;
-                    showAlert('送出成功，銷售顧問將盡快與您聯繫！');
+                    updateSubmitState();
+                    showAlert('您的諮詢單已傳送！<br>銷售顧問將於您方便的時間聯繫您。');
                 } catch (err) {
                     console.warn('Form submit failed:', err);
                     showAlert('送出失敗，請稍後再試！');
                 } finally {
-                    el.submit.disabled = false;
+                    updateSubmitState();
                 }
             });
         })();
