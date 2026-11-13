@@ -722,12 +722,12 @@
 
 
     <!-- Loading Overlay -->
-    <!-- <div class="loading" id="loading">
+    <div class="loading" id="loading">
         <div class="loading-text">LOADING</div>
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
-    </div> -->
+    </div>
 
     <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-[100] bg-transparent transition-all duration-300 flex items-center">
@@ -901,13 +901,26 @@
            2. DOM 事件監聽與邏輯控制
            ========================================================================== */
         document.addEventListener('DOMContentLoaded', () => {
-            // Loading Overlay 邏輯
             const overlay = document.getElementById('loading');
             if (overlay) {
-                setTimeout(() => {
+                let isFinished = false;
+                const hideLoading = () => {
+                    if (isFinished) return;
+                    isFinished = true;
+                    overlay.classList.add('fade-out');
                     overlay.style.opacity = '0';
-                    setTimeout(() => overlay.remove(), 300);
-                }, 500);
+                    setTimeout(() => {
+                        if (overlay.parentNode) overlay.remove();
+                    }, 600);
+                };
+
+                if (document.readyState === 'complete') {
+                    hideLoading();
+                } else {
+                    window.addEventListener('load', hideLoading, { once: true });
+                }
+
+                setTimeout(hideLoading, 3000);
             }
 
             // 影片自動靜音與 IntersectionObserver 控管
