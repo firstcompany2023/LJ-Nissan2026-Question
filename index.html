@@ -128,6 +128,419 @@
             filter: brightness(1.1);
         }
 
+        .submit-button:focus-visible {
+            outline: 2px solid #28594C;
+            outline-offset: 3px;
+        }
+
+        .submit-button:disabled {
+            filter: grayscale(0.4) brightness(0.9);
+            cursor: not-allowed;
+        }
+
+        /* ---- 4-1. 表單設計變數（標準色）---- */
+        #contact-form {
+            --c-primary: #28594C;
+            --c-primary-dark: #173F35;
+            --c-text: #182E2A;
+            --c-text-sub: #65746E;
+            --c-border: #CFD3CF;
+            --c-divider: #DDE2DD;
+            --c-disabled-bg: #EEF0EC;
+            --c-placeholder: #BFC4C1;
+            --c-error: #C8352B;
+            text-align: left;
+        }
+
+        /* ---- 4-2. 欄位群組與標籤 ---- */
+        .form-group {
+            margin-bottom: 32px;
+        }
+
+        .form-label {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0 6px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            color: var(--c-text);
+        }
+
+        .form-label .req {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--c-text);
+        }
+
+        .form-label .hint {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--c-text-sub);
+        }
+
+        .form-label a {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--c-primary);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .form-label a:hover {
+            color: var(--c-primary-dark);
+        }
+
+        /* ---- 4-3. 輸入框 / 下拉選單 ---- */
+        .form-control {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            height: 52px;
+            padding: 0 16px;
+            font-family: inherit;
+            font-size: 16px;
+            color: var(--c-text-sub);
+            background-color: #fff;
+            border: 1px solid var(--c-border);
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control::placeholder {
+            color: var(--c-placeholder);
+        }
+
+        .form-control:focus {
+            border-color: var(--c-primary);
+            box-shadow: inset 0 0 0 1px var(--c-primary), 0 0 0 4px rgba(40, 89, 76, 0.12);
+        }
+
+        .form-control:disabled {
+            background-color: var(--c-disabled-bg);
+            color: #8E9A94;
+            cursor: not-allowed;
+        }
+
+        .form-control:disabled::placeholder {
+            color: #A9B2AD;
+        }
+
+        select.form-control {
+            -webkit-appearance: none;
+            appearance: none;
+            padding-right: 48px;
+            cursor: pointer;
+            background-image: url('./assets/img/icon/left_arrow_head.svg');
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 12px 12px;
+        }
+
+        select.form-control:disabled {
+            background-image: url('./assets/img/icon/left_arrow_head.svg');
+            opacity: 1;
+        }
+
+        .error-msg {
+            display: none;
+            margin-top: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: var(--c-error);
+        }
+
+        .has-error .error-msg {
+            display: block;
+        }
+
+        .has-error .form-control {
+            border-color: var(--c-error);
+        }
+
+        .has-error .form-control:focus {
+            box-shadow: inset 0 0 0 1px var(--c-error), 0 0 0 4px rgba(200, 53, 43, 0.12);
+        }
+
+        .has-error .choice input {
+            border-color: var(--c-error);
+        }
+
+        /* ---- 4-4. 選擇控制項（Checkbox / Radio）---- */
+        .choice {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--c-text);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .choice input {
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+            flex: none;
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            background-color: #fff;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid var(--c-border);
+            cursor: pointer;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .choice input[type="checkbox"] {
+            border-radius: 4px;
+        }
+
+        .choice input[type="radio"] {
+            border-radius: 50%;
+        }
+
+        .choice:hover input:not(:checked) {
+            border-color: var(--c-primary);
+        }
+
+        .choice input:checked {
+            background-color: var(--c-primary);
+            border-color: var(--c-primary);
+        }
+
+        .choice input[type="checkbox"]:checked {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 6.4L4.8 9L10 3.2' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-size: 12px 12px;
+        }
+
+        .choice input[type="radio"]:checked {
+            background-image: radial-gradient(circle at center, #fff 0 3px, transparent 3.5px);
+        }
+
+        .choice input:focus-visible {
+            outline: 2px solid var(--c-primary);
+            outline-offset: 2px;
+        }
+
+        /* ---- 4-5. 版面配置（桌機）---- */
+        .name-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 12px;
+            align-items: start;
+        }
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-height: 52px;
+            padding-left: 12px;
+        }
+
+        .phone-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: calc(50% - 6px);
+        }
+
+        .phone-row .phone-area {
+            flex: none;
+            width: 110px;
+            padding: 0 12px;
+        }
+
+        .phone-row .phone-sep {
+            color: var(--c-text-sub);
+        }
+
+        .phone-row .phone-number {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .choice-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 21px;
+            padding-top: 6px;
+        }
+
+        .select-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 12px;
+        }
+
+        .form-divider {
+            margin: 0 0 40px;
+            border: 0;
+            border-top: 1px solid var(--c-divider);
+        }
+
+        .consent-group {
+            margin-bottom: 40px;
+        }
+
+        .consent-group .choice a {
+            color: var(--c-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .consent-group .choice a:hover {
+            color: var(--c-primary-dark);
+        }
+
+        /* ---- 4-6. 彈窗 ---- */
+        .html-lock {
+            overflow: hidden !important;
+        }
+
+        .modal {
+            box-sizing: border-box;
+            width: 670px;
+            max-width: calc(100% - 32px);
+            max-height: calc(100dvh - 32px);
+            margin: auto;
+            padding: 0;
+            color: var(--c-text, #182E2A);
+            background: #fff;
+            border: 1px solid #DDE2DD;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .modal[open] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal::backdrop {
+            background: rgba(6, 17, 18, 0.56);
+        }
+
+        .modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 32px 32px 0;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #173F35;
+        }
+
+        .modal-close {
+            flex: none;
+            display: grid;
+            place-items: center;
+            width: 32px;
+            height: 32px;
+            margin-right: -4px;
+            color: #28594C;
+            background: none;
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #173F35;
+        }
+
+        .modal-close:focus-visible {
+            outline: 2px solid #28594C;
+            outline-offset: 2px;
+        }
+
+        .modal-rule {
+            flex: none;
+            margin: 16px 32px 0;
+            border: 0;
+            border-top: 1px solid #DDE2DD;
+        }
+
+        .modal-body {
+            flex: 1 1 auto;
+            min-height: 0;
+            max-height: 350px;
+            margin: 12px 32px;
+            padding-right: 12px;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #182E2A;
+            scrollbar-width: thin;
+            scrollbar-color: #8EA39B #F1F3F1;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #F1F3F1;
+            border-radius: 3px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #8EA39B;
+            border-radius: 3px;
+        }
+
+        .modal-body p+p {
+            margin-top: 1.6em;
+        }
+
+        .modal-body a {
+            color: #28594C;
+            text-decoration: underline;
+        }
+
+        .modal-foot {
+            flex: none;
+            display: flex;
+            justify-content: center;
+            padding: 20px 32px 40px;
+        }
+
+        .modal-foot .submit-button {
+            width: 320px;
+            max-width: 100%;
+        }
+
+        .modal--alert {
+            width: 394px;
+        }
+
+        .modal--alert .modal-message {
+            padding: 48px 32px 40px;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+            color: #65746E;
+        }
+
+        .modal--alert .modal-foot {
+            padding: 0 32px 32px;
+        }
+
+        .modal--alert .modal-foot .submit-button {
+            width: 100%;
+        }
+
 
         /* ==========================================================================
            5. Loading Overlay
@@ -228,6 +641,73 @@
                 border: none;
             }
 
+            #contact-container>p:first-child {
+                font-size: 32px;
+            }
+
+            /* 姓名 / 稱謂：直式排列 */
+            .name-row {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .radio-group {
+                min-height: 0;
+                padding-left: 0;
+            }
+
+            /* 手機號碼：滿版 */
+            .phone-row {
+                width: 100%;
+            }
+
+            /* 聯絡時間：2 x 2 對齊 */
+            .choice-group--grid {
+                display: grid;
+                grid-template-columns: 118px 1fr;
+                gap: 32px 0;
+            }
+
+            /* 縣市 / 營業所：上下排列 */
+            .select-row {
+                grid-template-columns: 1fr;
+            }
+
+            /* 彈窗 */
+            .modal-head {
+                padding: 24px 24px 0;
+            }
+
+            .modal-title {
+                font-size: 20px;
+            }
+
+            .modal-rule {
+                margin: 16px 24px 0;
+            }
+
+            .modal-body {
+                margin: 12px 24px;
+                max-height: 55dvh;
+                font-size: 15px;
+            }
+
+            .modal-foot {
+                padding: 16px 24px 28px;
+            }
+
+            .modal-foot .submit-button {
+                width: 100%;
+            }
+
+            .modal--alert .modal-message {
+                padding: 40px 24px 32px;
+            }
+
+            .modal--alert .modal-foot {
+                padding: 0 24px 24px;
+            }
+
         }
 
         /* 手機橫屏裝置 */
@@ -274,14 +754,145 @@
             <p class="text-4xl font-bold text-[#173F35] mb-[10px]">購車諮詢</p>
             <p class="text-sm text-[#65746E]">填寫您的聯繫資訊與感興趣車款，銷售顧問將於您方便的時間聯繫您。</p>
             <hr class="my-6 border-[#DDE2DD]" />
-            <form id="contact-form" class="" accept="" method="post" action="/">
-                <!-- Form content goes here -->
-                <button type="submit" class="submit-button">
+            <form id="contact-form" class="" accept="" method="post" action="/" novalidate>
+
+                <!-- 姓名 / 稱謂 -->
+                <div class="form-group">
+                    <label for="name" class="form-label">姓名<span class="req" aria-hidden="true">*</span></label>
+                    <div class="name-row">
+                        <div class="field" data-field="name">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="請輸入姓名"
+                                autocomplete="name" maxlength="30" required aria-describedby="name-error">
+                            <p class="error-msg" id="name-error" role="alert">此為必填欄位</p>
+                        </div>
+                        <div class="radio-group" role="radiogroup" aria-label="稱謂">
+                            <label class="choice"><input type="radio" name="gender" value="先生">先生</label>
+                            <label class="choice"><input type="radio" name="gender" value="小姐">小姐</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 手機號碼 -->
+                <div class="form-group">
+                    <label for="phone1" class="form-label">手機號碼<span class="req" aria-hidden="true">*</span><span
+                            class="hint">請輸入可聯繫之手機號碼</span></label>
+                    <div class="field" data-field="phone">
+                        <div class="phone-row">
+                            <input type="tel" id="phone1" name="phone1" class="form-control phone-area"
+                                placeholder="手機前四碼" inputmode="numeric" maxlength="4" autocomplete="tel-national"
+                                required aria-describedby="phone-error">
+                            <span class="phone-sep" aria-hidden="true">-</span>
+                            <input type="tel" id="phone2" name="phone2" class="form-control phone-number"
+                                placeholder="手機後六碼" inputmode="numeric" maxlength="6" aria-label="手機後六碼" required
+                                aria-describedby="phone-error">
+                        </div>
+                        <p class="error-msg" id="phone-error" role="alert">此為必填欄位</p>
+                    </div>
+                </div>
+
+                <!-- 興趣車款 -->
+                <div class="form-group">
+                    <span class="form-label" id="label-models">興趣車款<span class="req"
+                            aria-hidden="true">*</span><span class="hint">可複選</span></span>
+                    <div class="field" data-field="models">
+                        <div class="choice-group" role="group" aria-labelledby="label-models">
+                            <label class="choice"><input type="checkbox" name="models" value="e-POWER QASHQAI">e-POWER
+                                QASHQAI</label>
+                            <label class="choice"><input type="checkbox" name="models" value="e-POWER X-TRAIL">e-POWER
+                                X-TRAIL</label>
+                        </div>
+                        <p class="error-msg" role="alert">此為必填欄位</p>
+                    </div>
+                </div>
+
+                <!-- 聯絡時間 -->
+                <div class="form-group">
+                    <span class="form-label" id="label-times">聯絡時間<span class="req"
+                            aria-hidden="true">*</span><span class="hint">可複選</span></span>
+                    <div class="field" data-field="times">
+                        <div class="choice-group choice-group--grid" role="group" aria-labelledby="label-times">
+                            <label class="choice"><input type="checkbox" name="times" value="8:00~12:00">8:00~12:00</label>
+                            <label class="choice"><input type="checkbox" name="times" value="12:00~15:00">12:00~15:00</label>
+                            <label class="choice"><input type="checkbox" name="times" value="15:00~18:00">15:00~18:00</label>
+                            <label class="choice"><input type="checkbox" name="times" value="18:00~20:00">18:00~20:00</label>
+                        </div>
+                        <p class="error-msg" role="alert">此為必填欄位</p>
+                    </div>
+                </div>
+
+                <!-- 聯繫據點 -->
+                <div class="form-group">
+                    <span class="form-label" id="label-location">聯繫據點<span class="req"
+                            aria-hidden="true">*</span><a href="#" id="branch-info-link" target="_blank"
+                            rel="noopener">查看各營業所詳細資訊</a></span>
+                    <div class="select-row" role="group" aria-labelledby="label-location">
+                        <div class="field" data-field="city">
+                            <select id="city" name="city" class="form-control" aria-label="選擇縣市" required
+                                aria-describedby="city-error">
+                                <option value="">選擇縣市</option>
+                            </select>
+                            <p class="error-msg" id="city-error" role="alert">此為必填欄位</p>
+                        </div>
+                        <div class="field" data-field="branch">
+                            <select id="branch" name="branch" class="form-control" aria-label="選擇營業所" required disabled
+                                aria-describedby="branch-error">
+                                <option value="">選擇營業所</option>
+                            </select>
+                            <p class="error-msg" id="branch-error" role="alert">此為必填欄位</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="form-divider" />
+
+                <!-- 個資同意 -->
+                <div class="consent-group field" data-field="agree">
+                    <label class="choice">
+                        <input type="checkbox" id="agree" name="agree" value="1" required
+                            aria-describedby="agree-error">
+                        <span>我已閱讀並同意個資授權<a href="#privacy-modal" id="privacy-link" role="button"
+                                aria-haspopup="dialog">（個資授權告知事項）</a></span>
+                    </label>
+                    <p class="error-msg" id="agree-error" role="alert">請閱讀並同意個資授權</p>
+                </div>
+
+                <button type="submit" class="submit-button" id="submit-btn">
                     確認送出
                 </button>
             </form>
         </div>
     </section>
+
+    <!-- 彈窗：個資授權告知事項 -->
+    <dialog id="privacy-modal" class="modal" aria-labelledby="privacy-title">
+        <div class="modal-head">
+            <h2 class="modal-title" id="privacy-title">個資授權告知事項</h2>
+            <button type="button" class="modal-close" data-close aria-label="關閉">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 4L20 20M20 4L4 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+        <hr class="modal-rule" />
+        <div class="modal-body" tabindex="0">
+            <p>網站保留一切法律權利。</p>
+            <p>對於您所登錄或留存之個人資料僅供主辦單位即裕隆日產汽車於本活動期間內就本活動之身分確認、滿意度調查、報名統計資料、行銷汽車或相關產品或服務、客戶管理、網路行為之調查或研究及其他合於裕隆日產汽車營業登記項目之業務活動範圍內為蒐集、處理及利用。您並同意裕隆日產汽車得將您所登錄或留存之個人資料提供予所屬經銷公司，於與前述目的類似之目的範圍內蒐集、處理及利用。<br>您就所提供之個人資料依法得行使查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用以及請求刪除等權利。</p>
+            <p>您了解並同意上述事項為您接受裕隆日產汽車所提供或安排之各項服務之必要條件。您得自由選擇是否要接受裕隆日產汽車所提供或安排之各項服務。對於您所登錄或留存之個人資料，您同意接受裕隆日產汽車之「隱私權保護」聲明(請參閱「<a
+                    href="#" target="_blank" rel="noopener">裕隆日產汽車隱私權保護聲明</a>」)。</p>
+        </div>
+        <hr class="modal-rule" style="margin-top:0" />
+        <div class="modal-foot">
+            <button type="button" class="submit-button" data-close>我知道了</button>
+        </div>
+    </dialog>
+
+    <!-- 彈窗：訊息提示（送出結果 / 錯誤） -->
+    <dialog id="alert-modal" class="modal modal--alert" aria-describedby="alert-message">
+        <p class="modal-message" id="alert-message"></p>
+        <div class="modal-foot">
+            <button type="button" class="submit-button" data-close>我知道了</button>
+        </div>
+    </dialog>
 
     <!-- Footer -->
     <footer class="w-full h-[75px] text-sm bg-[#E4E3DE] text-[#65746E] flex items-center justify-center">
@@ -473,12 +1084,214 @@
         /* ==========================================================================
            3. 錨點平滑捲動與觀測器 (IIFE)
            ========================================================================== */
+        // (function () {
+        //     // 錨點平滑捲動
+        //     window.addEventListener('load', () => {
+        //         if (location.hash) {
+        //             const target = document.getElementById(location.hash.slice(1));
+        //             if (target) setTimeout(() => scrollToElementWithOffset(target), 60);
+        //         }
+        //     });
+        // })();
+    </script>
+
+    <script>
+        /* ==========================================================================
+           4. 購車諮詢表單 (#contact-form)
+           ========================================================================== */
         (function () {
-            // 錨點平滑捲動
-            window.addEventListener('load', () => {
-                if (location.hash) {
-                    const target = document.getElementById(location.hash.slice(1));
-                    if (target) setTimeout(() => scrollToElementWithOffset(target), 60);
+            const form = document.getElementById('contact-form');
+            if (!form) return;
+
+            /* ---------- 縣市 / 營業所資料 ---------- */
+                const BRANCHES = {
+                    '基隆市': ['基隆營業所'],
+                    '台北市': ['北投營業所', '民權營業所', '濱江營業所'],
+                    '新北市': [
+                        '中和營業所', '三重營業所', '林口營業所', '輔大營業所',
+                        '新莊營業所', '新店營業所', '土城營業所', '汐止營業所',
+                        '淡水營業所'
+                    ],
+                    '桃園市': [
+                        '桃園營業所', '八德營業所', '桃鶯營業所', '楊梅營業所',
+                        '平鎮營業所', '北中壢營業所'
+                    ],
+                    '新竹市': ['新竹營業所'],
+                    '新竹縣': ['竹北營業所', '竹東營業所'],
+                    '苗栗縣': ['苗栗營業所', '頭份營業所'],
+                    '台中市': [
+                        '北台中營業所', '南台中營業所', '大里營業所', '五權西路營業所',
+                        '沙鹿營業所', '太平營業所', '豐原營業所', '松竹營業所'
+                    ],
+                    '彰化縣': ['彰化營業所', '員林營業所', '溪湖營業所'],
+                    '南投縣': ['南投營業所'],
+                    '雲林縣': ['斗南營業所'],
+                    '嘉義市': ['博賢營業所', '忠孝營業所'],
+                    '台南市': [
+                        '健康營業所', '永康營業所', '新營營業所', '太子營業所',
+                        '善化營業所'
+                    ],
+                    '高雄市': [
+                        '陽明營業所', '岡山營業所', '大中營業所', '一心營業所',
+                        '鳳山營業所'
+                    ],
+                    '屏東縣': ['和生營業所', '潮州營業所'],
+                    '宜蘭縣': ['宜蘭營業所'],
+                    '花蓮縣': ['花蓮營業所'],
+                    '台東縣': ['台東營業所']
+                };
+
+            const el = {
+                name: form.elements['name'],
+                phone1: form.elements['phone1'],
+                phone2: form.elements['phone2'],
+                city: form.elements['city'],
+                branch: form.elements['branch'],
+                agree: form.elements['agree'],
+                submit: document.getElementById('submit-btn')
+            };
+
+            /* ---------- 工具 ---------- */
+            const fieldOf = (key) => form.querySelector('[data-field="' + key + '"]');
+
+            function setError(key, message) {
+                const field = fieldOf(key);
+                if (!field) return;
+                const msg = field.querySelector('.error-msg');
+                if (message && msg) msg.textContent = message;
+                field.classList.add('has-error');
+                field.querySelectorAll('input:not([type=checkbox]):not([type=radio]), select').forEach(i => i.setAttribute('aria-invalid', 'true'));
+            }
+
+            function clearError(key) {
+                const field = fieldOf(key);
+                if (!field) return;
+                field.classList.remove('has-error');
+                field.querySelectorAll('[aria-invalid]').forEach(i => i.removeAttribute('aria-invalid'));
+            }
+
+            /* ---------- 縣市 → 營業所連動 ---------- */
+            Object.keys(BRANCHES).forEach(city => el.city.add(new Option(city, city)));
+
+            el.city.addEventListener('change', () => {
+                const list = BRANCHES[el.city.value] || [];
+                el.branch.length = 1; // 保留「選擇營業所」
+                list.forEach(b => el.branch.add(new Option(b, b)));
+                el.branch.value = '';
+                el.branch.disabled = list.length === 0;
+                clearError('city');
+                clearError('branch');
+            });
+
+            /* ---------- 手機：僅數字、前四碼滿後自動跳下一格 ---------- */
+            [el.phone1, el.phone2].forEach(input => {
+                input.addEventListener('input', () => {
+                    input.value = input.value.replace(/\D/g, '');
+                    clearError('phone');
+                    if (input === el.phone1 && input.value.length === 4) el.phone2.focus();
+                });
+            });
+
+            /* ---------- 其他欄位輸入時清除錯誤 ---------- */
+            el.name.addEventListener('input', () => clearError('name'));
+            el.branch.addEventListener('change', () => clearError('branch'));
+            form.querySelectorAll('input[name="models"]').forEach(i => i.addEventListener('change', () => clearError('models')));
+            form.querySelectorAll('input[name="times"]').forEach(i => i.addEventListener('change', () => clearError('times')));
+            el.agree.addEventListener('change', () => clearError('agree'));
+
+            /* ---------- 驗證 ---------- */
+            function validate() {
+                const errors = []; // [key, focusTarget]
+
+                if (!el.name.value.trim()) errors.push(['name', el.name, '此為必填欄位']);
+
+                const p1 = el.phone1.value.trim();
+                const p2 = el.phone2.value.trim();
+                if (!p1 || !p2) {
+                    errors.push(['phone', !p1 ? el.phone1 : el.phone2, '此為必填欄位']);
+                } else if (!/^09\d{2}$/.test(p1) || !/^\d{6}$/.test(p2)) {
+                    errors.push(['phone', !/^09\d{2}$/.test(p1) ? el.phone1 : el.phone2, '請輸入正確的手機號碼']);
+                }
+
+                if (!form.querySelector('input[name="models"]:checked'))
+                    errors.push(['models', form.querySelector('input[name="models"]'), '此為必填欄位']);
+                if (!form.querySelector('input[name="times"]:checked'))
+                    errors.push(['times', form.querySelector('input[name="times"]'), '此為必填欄位']);
+                if (!el.city.value) errors.push(['city', el.city, '此為必填欄位']);
+                else if (!el.branch.value) errors.push(['branch', el.branch, '此為必填欄位']);
+                if (!el.agree.checked) errors.push(['agree', el.agree, '請閱讀並同意個資授權']);
+
+                ['name', 'phone', 'models', 'times', 'city', 'branch', 'agree'].forEach(clearError);
+                errors.forEach(([key, , msg]) => setError(key, msg));
+
+                if (errors.length) {
+                    const target = errors[0][1];
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    target.focus({ preventScroll: true });
+                }
+                return errors.length === 0;
+            }
+
+            /* ---------- 彈窗 ---------- */
+            const root = document.documentElement;
+            let lastTrigger = null;
+
+            function openModal(dialog, trigger) {
+                lastTrigger = trigger || document.activeElement;
+                dialog.showModal();
+                root.classList.add('html-lock');
+            }
+
+            function closeModal(dialog) {
+                if (dialog.open) dialog.close();
+            }
+
+            document.querySelectorAll('dialog.modal').forEach(dialog => {
+                dialog.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', () => closeModal(dialog)));
+                // 點擊遮罩關閉
+                dialog.addEventListener('click', (e) => { if (e.target === dialog) closeModal(dialog); });
+                dialog.addEventListener('close', () => {
+                    if (!document.querySelector('dialog.modal[open]')) root.classList.remove('html-lock');
+                    if (lastTrigger && document.contains(lastTrigger)) lastTrigger.focus({ preventScroll: true });
+                });
+            });
+
+            const privacyModal = document.getElementById('privacy-modal');
+            const alertModal = document.getElementById('alert-modal');
+
+            document.getElementById('privacy-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(privacyModal, e.currentTarget);
+            });
+
+            function showAlert(message) {
+                document.getElementById('alert-message').textContent = message;
+                openModal(alertModal, el.submit);
+            }
+
+            /* ---------- 送出 ---------- */
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                showAlert('送出失敗，請稍後再試！');
+
+                if (!validate()) return;
+
+                const data = new FormData(form);
+                el.submit.disabled = true;
+                try {
+                    // TODO: 依後端規格調整送出方式與欄位
+                    const res = await fetch(form.getAttribute('action') || '/', { method: 'POST', body: data });
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    form.reset();
+                    el.branch.length = 1;
+                    el.branch.disabled = true;
+                    showAlert('送出成功，銷售顧問將盡快與您聯繫！');
+                } catch (err) {
+                    console.warn('Form submit failed:', err);
+                    showAlert('送出失敗，請稍後再試！');
+                } finally {
+                    el.submit.disabled = false;
                 }
             });
         })();
