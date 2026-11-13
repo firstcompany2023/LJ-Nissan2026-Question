@@ -19,10 +19,8 @@
     <link rel="apple-touch-icon" href="./assets/img/icon/logo.svg">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" /> -->
     <script src="./assets/js/tailwindcss.js"></script>
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <!-- <script src="./assets/js/swiper-bundle.min.js"></script> -->
     <!-- <version>2026111300000001</version> -->
 </head>
 
@@ -88,7 +86,6 @@
             padding-bottom: 56%;
         }
 
-
         /* ==========================================================================
            4. contact-section
            ========================================================================== */
@@ -96,7 +93,7 @@
         #contact-section {
             padding: 80px 0;
         }
-           
+
         #contact-container {
             max-width: 1000px;
             width: 100%;
@@ -746,8 +743,6 @@
                 <video id="tvc-video" class="absolute top-0 left-0 w-full h-full object-cover z-[1]" autoplay muted playsinline preload="auto">
                     <source src="./assets/video/1113.mp4" type="video/mp4">
                 </video>
-                <img id="tvd-img-cover" src="./assets/img/banner/comming.png" alt="TVC Poster"
-                    class="hidden absolute top-0 left-0 w-full h-full object-cover z-[1]" />
             </div>
         </div>
     </section>
@@ -757,7 +752,9 @@
             <p class="text-4xl font-bold text-[#173F35] mb-[10px]">購車諮詢</p>
             <p class="text-sm text-[#65746E]">填寫您的聯繫資訊與感興趣車款，銷售顧問將於您方便的時間聯繫您。</p>
             <hr class="my-6 border-[#DDE2DD]" />
-            <form id="contact-form" method="post" action="https://docs.google.com/forms/d/e/1FAIpQLSd_eg3Pp9bJfD46lDAycL2wkK8pYTpHKlAlI1NrYpHI7IybbQ/formResponse" novalidate>
+            <form id="contact-form" method="post"
+                action="https://docs.google.com/forms/d/e/1FAIpQLSd_eg3Pp9bJfD46lDAycL2wkK8pYTpHKlAlI1NrYpHI7IybbQ/formResponse"
+                novalidate>
                 <div class="form-group">
                     <label for="name" class="form-label">姓名<span class="req" aria-hidden="true">*</span></label>
                     <div class="name-row">
@@ -789,8 +786,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <span class="form-label" id="label-models">興趣車款<span class="req"
-                            aria-hidden="true">*</span><span class="hint">可複選</span></span>
+                    <span class="form-label" id="label-models">興趣車款<span class="req" aria-hidden="true">*</span><span
+                            class="hint">可複選</span></span>
                     <div class="field" data-field="models">
                         <div class="choice-group" role="group" aria-labelledby="label-models">
                             <label class="choice"><input type="checkbox" name="models" value="e-POWER QASHQAI">e-POWER
@@ -802,22 +799,25 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <span class="form-label" id="label-times">聯絡時間<span class="req"
-                            aria-hidden="true">*</span><span class="hint">可複選</span></span>
+                    <span class="form-label" id="label-times">聯絡時間<span class="req" aria-hidden="true">*</span><span
+                            class="hint">可複選</span></span>
                     <div class="field" data-field="times">
                         <div class="choice-group choice-group--grid" role="group" aria-labelledby="label-times">
-                            <label class="choice"><input type="checkbox" name="times" value="8:00~12:00">8:00~12:00</label>
-                            <label class="choice"><input type="checkbox" name="times" value="12:00~15:00">12:00~15:00</label>
-                            <label class="choice"><input type="checkbox" name="times" value="15:00~18:00">15:00~18:00</label>
-                            <label class="choice"><input type="checkbox" name="times" value="18:00~20:00">18:00~20:00</label>
+                            <label class="choice"><input type="checkbox" name="times"
+                                    value="8:00~12:00">8:00~12:00</label>
+                            <label class="choice"><input type="checkbox" name="times"
+                                    value="12:00~15:00">12:00~15:00</label>
+                            <label class="choice"><input type="checkbox" name="times"
+                                    value="15:00~18:00">15:00~18:00</label>
+                            <label class="choice"><input type="checkbox" name="times"
+                                    value="18:00~20:00">18:00~20:00</label>
                         </div>
                         <p class="error-msg" role="alert">此為必填欄位</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <span class="form-label" id="label-location">聯繫據點<span class="req"
-                            aria-hidden="true">*</span><a href="#" id="branch-info-link" target="_blank"
-                            rel="noopener">查看各營業所詳細資訊</a></span>
+                    <span class="form-label" id="label-location">聯繫據點<span class="req" aria-hidden="true">*</span><a
+                            href="#" id="branch-info-link" target="_blank" rel="noopener">查看各營業所詳細資訊</a></span>
                     <div class="select-row" role="group" aria-labelledby="label-location">
                         <div class="field" data-field="city">
                             <select id="city" name="city" class="form-control" aria-label="選擇縣市" required
@@ -840,8 +840,8 @@
                     <label class="choice">
                         <input type="checkbox" id="agree" name="agree" value="1" required
                             aria-describedby="agree-error">
-                        <span style="letter-spacing: 0;">我已閱讀並同意個資授權<a href="#privacy-modal" id="privacy-link" role="button"
-                                aria-haspopup="dialog">（個資授權告知事項）</a></span>
+                        <span style="letter-spacing: 0;">我已閱讀並同意個資授權<a href="#privacy-modal" id="privacy-link"
+                                role="button" aria-haspopup="dialog">（個資授權告知事項）</a></span>
                     </label>
                     <p class="error-msg" id="agree-error" role="alert">請閱讀並同意個資授權</p>
                 </div>
@@ -864,7 +864,8 @@
         <hr class="modal-rule" />
         <div class="modal-body" tabindex="0">
             <p>網站保留一切法律權利。</p>
-            <p>對於您所登錄或留存之個人資料僅供主辦單位即裕隆日產汽車於本活動期間內就本活動之身分確認、滿意度調查、報名統計資料、行銷汽車或相關產品或服務、客戶管理、網路行為之調查或研究及其他合於裕隆日產汽車營業登記項目之業務活動範圍內為蒐集、處理及利用。您並同意裕隆日產汽車得將您所登錄或留存之個人資料提供予所屬經銷公司，於與前述目的類似之目的範圍內蒐集、處理及利用。<br>您就所提供之個人資料依法得行使查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用以及請求刪除等權利。</p>
+            <p>對於您所登錄或留存之個人資料僅供主辦單位即裕隆日產汽車於本活動期間內就本活動之身分確認、滿意度調查、報名統計資料、行銷汽車或相關產品或服務、客戶管理、網路行為之調查或研究及其他合於裕隆日產汽車營業登記項目之業務活動範圍內為蒐集、處理及利用。您並同意裕隆日產汽車得將您所登錄或留存之個人資料提供予所屬經銷公司，於與前述目的類似之目的範圍內蒐集、處理及利用。<br>您就所提供之個人資料依法得行使查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用以及請求刪除等權利。
+            </p>
             <p>您了解並同意上述事項為您接受裕隆日產汽車所提供或安排之各項服務之必要條件。您得自由選擇是否要接受裕隆日產汽車所提供或安排之各項服務。對於您所登錄或留存之個人資料，您同意接受裕隆日產汽車之「隱私權保護」聲明(請參閱「<a
                     href="#" target="_blank" rel="noopener">裕隆日產汽車隱私權保護聲明</a>」)。</p>
         </div>
@@ -898,7 +899,7 @@
         }
 
         /* ==========================================================================
-           2. DOM 事件監聽與邏輯控制
+           1. DOM 事件監聽與邏輯控制
            ========================================================================== */
         document.addEventListener('DOMContentLoaded', () => {
             const overlay = document.getElementById('loading');
@@ -925,7 +926,6 @@
 
             // 影片自動靜音與 IntersectionObserver 控管
             const allVideos = document.querySelectorAll('video');
-            allVideos.forEach(v => { v.muted = true; });
 
             if (allVideos.length > 0 && 'IntersectionObserver' in window) {
                 const videoObserver = new IntersectionObserver((entries) => {
@@ -1007,15 +1007,10 @@
             // initial evaluation after small delay to allow layout to settle
             setTimeout(evaluateVideosVisibility, 120);
 
-            // TVC 影片播放與結束切換封面圖
+            // TVC 影片播放與結束控制（停在最後一幀）
             const tvcVideo = document.getElementById('tvc-video');
-            const tvdImgCover = document.getElementById('tvd-img-cover');
 
-            if (tvcVideo && tvdImgCover) {
-                // 確保靜音屬性以符合瀏覽器自動播放政策 (Autoplay Policy)
-                tvcVideo.muted = true;
-                tvcVideo.defaultMuted = true;
-                tvcVideo.setAttribute('muted', '');
+            if (tvcVideo) {
 
                 const tryPlayVideo = () => {
                     if (tvcVideo.paused && !tvcVideo.ended) {
@@ -1025,7 +1020,6 @@
                     }
                 };
 
-                // 當影片可播放或已載入時嘗試播放
                 if (tvcVideo.readyState >= 2) {
                     tryPlayVideo();
                 } else {
@@ -1033,7 +1027,6 @@
                     tvcVideo.addEventListener('loadedmetadata', tryPlayVideo, { once: true });
                 }
 
-                // 首次使用者互動時的備援啟動（針對限制較嚴格之行動裝置/瀏覽器）
                 const onFirstInteraction = () => {
                     tryPlayVideo();
                     window.removeEventListener('click', onFirstInteraction);
@@ -1042,107 +1035,62 @@
                 window.addEventListener('click', onFirstInteraction, { once: true });
                 window.addEventListener('touchstart', onFirstInteraction, { once: true });
 
-                // 播放完畢切換：隱藏影片、顯示封面圖
                 tvcVideo.addEventListener('ended', () => {
-                    tvcVideo.style.display = 'none';
-                    tvdImgCover.classList.remove('hidden');
+                    tvcVideo.pause();
 
+                    const isDesktop = window.innerWidth >= 768;
                     const contactSection = document.getElementById('contact-section');
-                    if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' , });
+                    if (contactSection && isDesktop) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
             }
-
-            // TVC 聲音按鈕
-            const soundOnBtn = document.querySelector('.sound-off-btn');
-            const soundOffBtn = document.querySelector('.sound-on-btn');
-
-            if (soundOnBtn && soundOffBtn) {
-                const updateSoundButtons = () => {
-                    if (tvcVideo && !tvcVideo.muted) {
-                        soundOnBtn.classList.add('active');
-                        soundOffBtn.classList.remove('active');
-                    } else {
-                        soundOnBtn.classList.remove('active');
-                        soundOffBtn.classList.add('active');
-                    }
-                };
-
-                const toggleSound = (e) => {
-                    if (e) e.preventDefault();
-                    if (tvcVideo) {
-                        tvcVideo.muted = !tvcVideo.muted;
-                        if (!tvcVideo.muted) tvcVideo.play().catch(() => { });
-                        updateSoundButtons();
-                    }
-                };
-
-                soundOnBtn.addEventListener('click', toggleSound);
-                soundOffBtn.addEventListener('click', toggleSound);
-                updateSoundButtons();
-            }
-
         });
-        /* ==========================================================================
-           3. 錨點平滑捲動與觀測器 (IIFE)
-           ========================================================================== */
-        // (function () {
-        //     // 錨點平滑捲動
-        //     window.addEventListener('load', () => {
-        //         if (location.hash) {
-        //             const target = document.getElementById(location.hash.slice(1));
-        //             if (target) setTimeout(() => scrollToElementWithOffset(target), 60);
-        //         }
-        //     });
-        // })();
-    </script>
 
-    <script>
         /* ==========================================================================
-           4. 購車諮詢表單 (#contact-form)
+           2. 購車諮詢表單 (#contact-form)
            ========================================================================== */
         (function () {
             const form = document.getElementById('contact-form');
             if (!form) return;
 
             /* ---------- 縣市 / 營業所資料 ---------- */
-                const BRANCHES = {
-                    '基隆市': ['基隆營業所'],
-                    '台北市': ['北投營業所', '民權營業所', '濱江營業所'],
-                    '新北市': [
-                        '中和營業所', '三重營業所', '林口營業所', '輔大營業所',
-                        '新莊營業所', '新店營業所', '土城營業所', '汐止營業所',
-                        '淡水營業所'
-                    ],
-                    '桃園市': [
-                        '桃園營業所', '八德營業所', '桃鶯營業所', '楊梅營業所',
-                        '平鎮營業所', '北中壢營業所'
-                    ],
-                    '新竹市': ['新竹營業所'],
-                    '新竹縣': ['竹北營業所', '竹東營業所'],
-                    '苗栗縣': ['苗栗營業所', '頭份營業所'],
-                    '台中市': [
-                        '北台中營業所', '南台中營業所', '大里營業所', '五權西路營業所',
-                        '沙鹿營業所', '太平營業所', '豐原營業所', '松竹營業所'
-                    ],
-                    '彰化縣': ['彰化營業所', '員林營業所', '溪湖營業所'],
-                    '南投縣': ['南投營業所'],
-                    '雲林縣': ['斗南營業所'],
-                    '嘉義市': ['博賢營業所', '忠孝營業所'],
-                    '台南市': [
-                        '健康營業所', '永康營業所', '新營營業所', '太子營業所',
-                        '善化營業所'
-                    ],
-                    '高雄市': [
-                        '陽明營業所', '岡山營業所', '大中營業所', '一心營業所',
-                        '鳳山營業所'
-                    ],
-                    '屏東縣': ['和生營業所', '潮州營業所'],
-                    '宜蘭縣': ['宜蘭營業所'],
-                    '花蓮縣': ['花蓮營業所'],
-                    '台東縣': ['台東營業所']
-                };
+            const BRANCHES = {
+                '基隆市': ['基隆營業所'],
+                '台北市': ['北投營業所', '民權營業所', '濱江營業所'],
+                '新北市': [
+                    '中和營業所', '三重營業所', '林口營業所', '輔大營業所',
+                    '新莊營業所', '新店營業所', '土城營業所', '汐止營業所',
+                    '淡水營業所'
+                ],
+                '桃園市': [
+                    '桃園營業所', '八德營業所', '桃鶯營業所', '楊梅營業所',
+                    '平鎮營業所', '北中壢營業所'
+                ],
+                '新竹市': ['新竹營業所'],
+                '新竹縣': ['竹北營業所', '竹東營業所'],
+                '苗栗縣': ['苗栗營業所', '頭份營業所'],
+                '台中市': [
+                    '北台中營業所', '南台中營業所', '大里營業所', '五權西路營業所',
+                    '沙鹿營業所', '太平營業所', '豐原營業所', '松竹營業所'
+                ],
+                '彰化縣': ['彰化營業所', '員林營業所', '溪湖營業所'],
+                '南投縣': ['南投營業所'],
+                '雲林縣': ['斗南營業所'],
+                '嘉義市': ['博賢營業所', '忠孝營業所'],
+                '台南市': [
+                    '健康營業所', '永康營業所', '新營營業所', '太子營業所',
+                    '善化營業所'
+                ],
+                '高雄市': [
+                    '陽明營業所', '岡山營業所', '大中營業所', '一心營業所',
+                    '鳳山營業所'
+                ],
+                '屏東縣': ['和生營業所', '潮州營業所'],
+                '宜蘭縣': ['宜蘭營業所'],
+                '花蓮縣': ['花蓮營業所'],
+                '台東縣': ['台東營業所']
+            };
 
             const el = {
                 name: form.elements['name'],
@@ -1342,7 +1290,7 @@
                 e.preventDefault();
 
                 if (!validate()) return;
-                
+
                 const data = new FormData(form);
 
                 ['models', 'times'].forEach(fieldName => {
@@ -1352,7 +1300,7 @@
 
                 el.submit.disabled = true;
                 try {
-                    
+
                     const sheetData = new FormData();
                     sheetData.append('entry.882057871', data.get('name'));
                     sheetData.append('entry.1228242096', data.get('gender'));
