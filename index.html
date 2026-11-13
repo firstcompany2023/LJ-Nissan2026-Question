@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NISSAN</title>
+    <meta name="description" content="NISSAN ">
+    <link rel="icon" href="./assets/img/favicon/favicon.ico" sizes="any">
+    <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="NISSAN" />
+    <meta property="og:description" content="NISSAN " />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="./assets/img/favicon/fb.jpg" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="./assets/img/icon/logo.svg">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">    
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <!-- <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" /> -->
+    <script src="./assets/js/tailwindcss.js"></script>
+    <!-- <script src="./assets/js/swiper-bundle.min.js"></script> -->
+    <!-- <version>2026111300000001</version> -->
+</head>
+
+<body>
+    <style>
+        /* ==========================================================================
+           1. 基礎與通用樣式 (Base & Utilities)
+           ========================================================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html, body {
+            width: 100%;
+            height: auto !important;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            position: relative;
+        }
+
+        header {
+            height: 40px;
+            background: linear-gradient(90deg, rgba(6, 17, 18, 0.56) 0%, rgba(6, 17, 18, 0) 100%);
+            padding: 0 20px;
+        }
+
+        /* ==========================================================================
+           2. Popup Modal 彈出視窗
+           ========================================================================== */
+
+
+        /* ==========================================================================
+           4. TVC 區塊
+           ========================================================================== */
+        #tvc-section {
+        }
+
+        .tvc-info {
+        }
+
+        .video-container {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56%;
+        }
+
+        .svg-mask {
+            display: inline-block;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+
+        /* specific sizes for the two logos */
+        .svg-mask--logo {
+            width: 142px;
+            height: 17px;
+            background-color: #FFF; /* target color */
+            -webkit-mask-image: url('./assets/img/icon/logo.svg');
+            mask-image: url('./assets/img/icon/logo.svg');
+        }
+
+        /* Loading 容器 */
+        .loading {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+
+        background: #000;
+        opacity: 1;
+        transition: opacity 0.6s ease;
+        }
+
+        /* 淡出 */
+        .loading.fade-out {
+        opacity: 0;
+        pointer-events: none;
+        }
+
+        /* Loading 文字 */
+        .loading-text {
+        color: rgba(180, 230, 232, 0.75);
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 5px;
+        }
+
+        /* 進度條 */
+        .progress {
+        width: 110px;
+        height: 1px;
+        background: rgba(100, 180, 185, 0.2);
+        overflow: hidden;
+        }
+
+        .progress-bar {
+        width: 40%;
+        height: 100%;
+
+        background: linear-gradient(
+            90deg,
+            transparent,
+            #37dce5,
+            #b3ffff
+        );
+
+        animation: progressMove 1.8s ease-in-out infinite;
+        }
+
+        /* 進度動畫 */
+        @keyframes progressMove {
+        from {
+            transform: translateX(-120%);
+        }
+
+        to {
+            transform: translateX(350%);
+        }
+        }
+
+        /* 減少動態效果 */
+        @media (prefers-reduced-motion: reduce) {
+        .progress-bar {
+            animation: none;
+            width: 100%;
+            opacity: 0.7;
+        }
+        }
+
+
+    </style>
+
+    
+    <!-- Loading Overlay -->
+    <div class="loading" id="loading">
+        <div class="loading-text">LOADING</div>
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-[100] bg-transparent transition-all duration-300 flex items-center">
+        <div class="block">
+            <a href="#" class="leading-none block transition-transform duration-300 hover:scale-105" aria-label="NISSAN LOGO">
+                <span class="svg-mask svg-mask--logo" role="img" aria-label="NISSAN LOGO"></span>
+            </a>
+        </div>
+    </header>
+
+    <!-- TVC Section -->
+    <section id="tvc-section" class="w-full relative">
+        <div id="tvc-info" class="tvc-info">
+            <div class="video-container">
+                <video id="tvc-video" class="absolute top-0 left-0 w-full h-full object-cover p-[1%] z-[1]" muted loop playsinline preload="none">
+                    <source src="./assets/video/video001.mp4" type="video/mp4">
+                </video>
+                <img id="tvd-img-cover" src="./assets/img/banner/comming.png" alt="TVC Poster" class="absolute top-0 left-0 w-full h-full object-cover p-[1%] z-[0]" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full text-center py-4 md:py-8 text-sm bg-[#B4A292] text-black">
+        © NISSAN TAIWAN.
+    </footer>
+
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <button class="popup-close" id="popupClose" aria-label="Close Popup"></button>
+        </div>
+    </div>
+
+    <script>
+        
+        // 工具函式：Debounce 防抖
+        function debounce(func, wait = 100) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        /* ==========================================================================
+           2. DOM 事件監聽與邏輯控制
+           ========================================================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Loading Overlay 邏輯
+            const overlay = document.getElementById('loading');
+            if (overlay) {
+                setTimeout(() => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => overlay.remove(), 300);
+                }, 500);
+            }
+
+            // 影片自動靜音與 IntersectionObserver 控管
+            const allVideos = document.querySelectorAll('video');
+            allVideos.forEach(v => { v.muted = true; });
+
+            if (allVideos.length > 0 && 'IntersectionObserver' in window) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const video = entry.target;
+                        if (entry.isIntersecting) {
+                            if (video.dataset.src && !video.src) {
+                                video.src = video.dataset.src;
+                                video.load();
+                            }
+                            if (document.visibilityState === 'visible') video.play().catch(() => {});
+                        } else {
+                            if (!video.paused) video.pause();
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                allVideos.forEach(v => videoObserver.observe(v));
+
+                document.addEventListener('visibilitychange', () => {
+                    allVideos.forEach(video => {
+                        if (document.hidden) {
+                            if (!video.paused) video.pause();
+                        } else {
+                            const rect = video.getBoundingClientRect();
+                            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                                video.play().catch(() => {});
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Additional: scroll/resize listener to ensure videos only play when actually visible
+            // This preserves the IntersectionObserver logic above but adds a debounced safeguard
+            // for environments where IO may be delayed or to further reduce data usage.
+            function isElementVisibleInViewport(el, threshold = 0.25) {
+                if (!el) return false;
+                const rect = el.getBoundingClientRect();
+                const vh = window.innerHeight || document.documentElement.clientHeight;
+                const vw = window.innerWidth || document.documentElement.clientWidth;
+
+                // Completely off-screen
+                if (rect.bottom <= 0 || rect.top >= vh || rect.right <= 0 || rect.left >= vw) return false;
+
+                // Compute visible area ratio (approx)
+                const visibleHeight = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+                const visibleWidth = Math.min(rect.right, vw) - Math.max(rect.left, 0);
+                const visibleArea = Math.max(0, visibleHeight) * Math.max(0, visibleWidth);
+                const totalArea = Math.max(1, rect.width * rect.height);
+                const ratio = visibleArea / totalArea;
+                return ratio >= threshold;
+            }
+
+            const evaluateVideosVisibility = debounce(() => {
+                allVideos.forEach(video => {
+                    try {
+                        const shouldBePlaying = isElementVisibleInViewport(video, 0.25) && document.visibilityState === 'visible';
+                        if (shouldBePlaying) {
+                            // lazy-load src if needed (keep parity with IntersectionObserver behavior)
+                            if (video.dataset.src && !video.src) {
+                                video.src = video.dataset.src;
+                                video.load();
+                            }
+                            if (video.paused) video.play().catch(() => {});
+                        } else {
+                            if (!video.paused) video.pause();
+                        }
+                    } catch (e) {
+                        // ignore per-video errors
+                    }
+                });
+            }, 150);
+
+            // Attach listeners (passive where appropriate)
+            window.addEventListener('scroll', evaluateVideosVisibility, { passive: true });
+            window.addEventListener('resize', evaluateVideosVisibility);
+
+            // initial evaluation after small delay to allow layout to settle
+            setTimeout(evaluateVideosVisibility, 120);
+
+            
+            // TVC 聲音按鈕
+            const soundOnBtn = document.querySelector('.sound-off-btn');
+            const soundOffBtn = document.querySelector('.sound-on-btn');
+            const tvcVideo = document.getElementById('tvc-video');
+
+            if (soundOnBtn && soundOffBtn) {
+                const updateSoundButtons = () => {
+                    if (tvcVideo && !tvcVideo.muted) {
+                        soundOnBtn.classList.add('active');
+                        soundOffBtn.classList.remove('active');
+                    } else {
+                        soundOnBtn.classList.remove('active');
+                        soundOffBtn.classList.add('active');
+                    }
+                };
+
+                const toggleSound = (e) => {
+                    if (e) e.preventDefault();
+                    if (tvcVideo) {
+                        tvcVideo.muted = !tvcVideo.muted;
+                        if (!tvcVideo.muted) tvcVideo.play().catch(() => {});
+                        updateSoundButtons();
+                    }
+                };
+
+                soundOnBtn.addEventListener('click', toggleSound);
+                soundOffBtn.addEventListener('click', toggleSound);
+                updateSoundButtons();
+            }
+
+        });
+        /* ==========================================================================
+           3. 錨點平滑捲動與觀測器 (IIFE)
+           ========================================================================== */
+        (function() {
+            // 錨點平滑捲動
+            window.addEventListener('load', () => {
+                if (location.hash) {
+                    const target = document.getElementById(location.hash.slice(1));
+                    if (target) setTimeout(() => scrollToElementWithOffset(target), 60);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
