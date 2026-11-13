@@ -804,20 +804,20 @@
                     <div class="field" data-field="times">
                         <div class="choice-group choice-group--grid" role="group" aria-labelledby="label-times">
                             <label class="choice"><input type="checkbox" name="times"
-                                    value="8:00~12:00">8:00~12:00</label>
+                                    value="08:00-12:00">8:00~12:00</label>
                             <label class="choice"><input type="checkbox" name="times"
-                                    value="12:00~15:00">12:00~15:00</label>
+                                    value="12:00-15:00">12:00~15:00</label>
                             <label class="choice"><input type="checkbox" name="times"
-                                    value="15:00~18:00">15:00~18:00</label>
+                                    value="15:00-18:00">15:00~18:00</label>
                             <label class="choice"><input type="checkbox" name="times"
-                                    value="18:00~20:00">18:00~20:00</label>
+                                    value="18:00-20:00">18:00~20:00</label>
                         </div>
                         <p class="error-msg" role="alert">此為必填欄位</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <span class="form-label" id="label-location">聯繫據點<span class="req" aria-hidden="true">*</span><a
-                            href="#" id="branch-info-link" target="_blank" rel="noopener">查看各營業所詳細資訊</a></span>
+                            href="https://new.nissan.com.tw/nissan/owners/services/locations/sales" id="branch-info-link" target="_blank" rel="noopener">查看各營業所詳細資訊</a></span>
                     <div class="select-row" role="group" aria-labelledby="label-location">
                         <div class="field" data-field="city">
                             <select id="city" name="city" class="form-control" aria-label="選擇縣市" required
@@ -1283,6 +1283,7 @@
 
             const privacyModal = document.getElementById('privacy-modal');
             const alertModal = document.getElementById('alert-modal');
+            let submitted = false;
 
             document.getElementById('privacy-link').addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1290,7 +1291,7 @@
             });
 
             function showAlert(message) {
-                document.getElementById('alert-message').textContent = message;
+                document.getElementById('alert-message').innerHTML = message;
                 openModal(alertModal, el.submit);
             }
 
@@ -1298,38 +1299,65 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
+                if (submitted) return;
                 if (!validate()) return;
 
                 const data = new FormData(form);
 
-                ['models', 'times'].forEach(fieldName => {
-                    const checkedValues = Array.from(form.querySelectorAll(`input[name="${fieldName}"]:checked`)).map(i => i.value);
-                    data.set(fieldName, checkedValues.join('、'));
-                });
+                // ['models', 'times'].forEach(fieldName => {
+                //     const checkedValues = Array.from(form.querySelectorAll(`input[name="${fieldName}"]:checked`)).map(i => i.value);
+                //     data.set(fieldName, checkedValues.join('、'));
+                // });
 
+                submitted = true;
                 el.submit.disabled = true;
+                el.submit.innerText = '資料送出中...';
+
+                const sheetData = new URLSearchParams();
+                sheetData.append('fvv', '1');
+                sheetData.append('pageHistory', '0');
+                sheetData.append('fbzx', '-5593482821108539385');
+
+                sheetData.append('entry.882057871', data.get('name') || '');
+                sheetData.append('entry.1228242096', data.get('gender') || '');
+                sheetData.append('entry.1228242096_sentinel', '');
+                sheetData.append('entry.199210044', (data.get('phone1') || '') + (data.get('phone2') || ''));
+
+                // Google 表單複選題需多次 append 同一個 entry key
+                form.querySelectorAll('input[name="models"]:checked').forEach(i => {
+                    sheetData.append('entry.1404847317', i.value);
+                });
+                sheetData.append('entry.1404847317_sentinel', '');
+
+                form.querySelectorAll('input[name="times"]:checked').forEach(i => {
+                    sheetData.append('entry.610181726', i.value);
+                });
+                sheetData.append('entry.610181726_sentinel', '');
+
+                sheetData.append('entry.19051359', ((data.get('city') || '') + ' ' + (data.get('branch') || '')).trim());
+
                 try {
+                    // 使用 mode: 'no-cors' 送出，完全不依賴 iframe（免除 CSP frame-ancestors 警告）
+                    // 也不會被瀏覽器 CORS 擋下，請求能直接被 Google Forms 正常接收並寫入
+                    await fetch(form.getAttribute('action') || '/', {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: sheetData
+                    });
 
-                    const sheetData = new FormData();
-                    sheetData.append('entry.882057871', data.get('name'));
-                    sheetData.append('entry.1228242096', data.get('gender'));
-                    sheetData.append('entry.199210044', data.get('phone1') + data.get('phone2'));
-                    sheetData.append('entry.1404847317', data.get('models'));
-                    sheetData.append('entry.610181726', data.get('times'));
-                    sheetData.append('entry.19051359', data.get('city') + ' ' + data.get('branch'));
-
-
-                    const res = await fetch(form.getAttribute('action') || '/', { method: 'POST', body: sheetData });
-                    if (!res.ok) throw new Error('HTTP ' + res.status);
                     form.reset();
                     el.branch.length = 1;
                     el.branch.disabled = true;
-                    updateSubmitState();
                     showAlert('您的諮詢單已傳送！<br>銷售顧問將於您方便的時間聯繫您。');
                 } catch (err) {
                     console.warn('Form submit failed:', err);
                     showAlert('送出失敗，請稍後再試！');
                 } finally {
+                    submitted = false;
+                    el.submit.innerText = '確認送出';
                     updateSubmitState();
                 }
             });
