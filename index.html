@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NISSAN</title>
+    <meta name="description" content="NISSAN ">
+    <link rel="icon" href="./assets/img/favicon/favicon.ico" sizes="any">
+    <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="NISSAN" />
+    <meta property="og:description" content="NISSAN " />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="./assets/img/favicon/fb.jpg" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="./assets/img/icon/logo.svg">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="./assets/js/tailwindcss.js"></script>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <!-- <version>2026111300000001</version> -->
+</head>
+
+<body>
+    <style>
+        /* ==========================================================================
+           1. 基礎與通用樣式 (Base & Utilities)
+           ========================================================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: auto !important;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            position: relative;
+        }
+
+        header {
+            height: 40px;
+            background: linear-gradient(90deg, rgba(6, 17, 18, 0.56) 0%, rgba(6, 17, 18, 0) 100%);
+            padding: 0 20px;
+        }
+
+        .svg-mask {
+            display: inline-block;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+
+        /* specific sizes for the two logos */
+        .svg-mask--logo {
+            width: 142px;
+            height: 17px;
+            background-color: #FFF;
+            /* target color */
+            -webkit-mask-image: url('./assets/img/icon/logo.svg');
+            mask-image: url('./assets/img/icon/logo.svg');
+        }
+
+        /* ==========================================================================
+           2. Popup Modal 彈出視窗
+           ========================================================================== */
+
+
+        /* ==========================================================================
+           3. TVC 區塊
+           ========================================================================== */
+        #tvc-section {}
+
+        .tvc-info {}
+
+        .video-container {
+            width: 100%;
+            min-height: 100dvh;
+            padding-bottom: 56%;
+        }
+
+        /* ==========================================================================
+           4. contact-section
+           ========================================================================== */
+
+        #contact-section {
+            padding: 80px 0;
+        }
+
+        #contact-container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 48px 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            border: #DDE2DD solid 1px;
+        }
+
+        .submit-button {
+            display: inline-block;
+            padding: 14px 0px;
+            color: #fff;
+            font-size: 16px;
+            border-bottom: 2px solid #0E2B25;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            background-image: url(./assets/img/icon/btn-bg.svg);
+            background-position: center center;
+            background-size: cover;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 14px rgba(23, 63, 53, 0.18);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button:hover {
+            filter: brightness(1.1);
+        }
+
+        .submit-button:focus-visible {
+            outline: 2px solid #28594C;
+            outline-offset: 3px;
+        }
+
+        .submit-button:disabled {
+            filter: grayscale(0.8) brightness(0.8);
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
+        /* ---- 4-1. 表單設計變數（標準色）---- */
+        #contact-form {
+            --c-primary: #28594C;
+            --c-primary-dark: #173F35;
+            --c-text: #182E2A;
+            --c-text-sub: #65746E;
+            --c-border: #CFD3CF;
+            --c-divider: #DDE2DD;
+            --c-disabled-bg: #EEF0EC;
+            --c-placeholder: #BFC4C1;
+            --c-error: #C8352B;
+            text-align: left;
+        }
+
+        /* ---- 4-2. 欄位群組與標籤 ---- */
+        .form-group {
+            margin-bottom: 32px;
+        }
+
+        .form-label {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0 6px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            color: var(--c-text);
+        }
+
+        .form-label .req {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--c-text);
+        }
+
+        .form-label .hint {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--c-text-sub);
+        }
+
+        .form-label a {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--c-primary);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .form-label a:hover {
+            color: var(--c-primary-dark);
+        }
+
+        /* ---- 4-3. 輸入框 / 下拉選單 ---- */
+        .form-control {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            height: 52px;
+            padding: 0 16px;
+            font-family: inherit;
+            font-size: 16px;
+            color: var(--c-text-sub);
+            background-color: #fff;
+            border: 1px solid var(--c-border);
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control::placeholder {
+            color: var(--c-placeholder);
+        }
+
+        .form-control:focus {
+            border-color: var(--c-primary);
+            box-shadow: inset 0 0 0 1px var(--c-primary), 0 0 0 4px rgba(40, 89, 76, 0.12);
+        }
+
+        .form-control:disabled {
+            background-color: var(--c-disabled-bg);
+            color: #8E9A94;
+            cursor: not-allowed;
+        }
+
+        .form-control:disabled::placeholder {
+            color: #A9B2AD;
+        }
+
+        select.form-control {
+            -webkit-appearance: none;
+            appearance: none;
+            padding-right: 48px;
+            cursor: pointer;
+            background-image: url('./assets/img/icon/left_arrow_head.svg');
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 12px 12px;
+        }
+
+        select.form-control:disabled {
+            background-image: url('./assets/img/icon/left_arrow_head.svg');
+            opacity: 1;
+        }
+
+        .error-msg {
+            display: none;
+            margin-top: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: var(--c-error);
+        }
+
+        .has-error .error-msg {
+            display: block;
+        }
+
+        .has-error .form-control {
+            border-color: var(--c-error);
+        }
+
+        .has-error .form-control:focus {
+            box-shadow: inset 0 0 0 1px var(--c-error), 0 0 0 4px rgba(200, 53, 43, 0.12);
+        }
+
+        .has-error .choice input {
+            border-color: var(--c-error);
+        }
+
+        /* ---- 4-4. 選擇控制項（Checkbox / Radio）---- */
+        .choice {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--c-text);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .choice input {
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+            flex: none;
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            background-color: #fff;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid var(--c-border);
+            cursor: pointer;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .choice input[type="checkbox"] {
+            border-radius: 4px;
+        }
+
+        .choice input[type="radio"] {
+            border-radius: 50%;
+        }
+
+        .choice:hover input:not(:checked) {
+            border-color: var(--c-primary);
+        }
+
+        .choice input:checked {
+            background-color: var(--c-primary);
+            border-color: var(--c-primary);
+        }
+
+        .choice input[type="checkbox"]:checked {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 6.4L4.8 9L10 3.2' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-size: 12px 12px;
+        }
+
+        .choice input[type="radio"]:checked {
+            background-image: radial-gradient(circle at center, #fff 0 3px, transparent 3.5px);
+        }
+
+        .choice input:focus-visible {
+            outline: 2px solid var(--c-primary);
+            outline-offset: 2px;
+        }
+
+        /* ---- 4-5. 版面配置（桌機）---- */
+        .name-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 12px;
+            align-items: start;
+        }
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-height: 52px;
+            padding-left: 12px;
+        }
+
+        .phone-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: calc(50% - 6px);
+        }
+
+        .phone-row .phone-area {
+            flex: none;
+            width: 110px;
+            padding: 0 12px;
+        }
+
+        .phone-row .phone-sep {
+            color: var(--c-text-sub);
+        }
+
+        .phone-row .phone-number {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .choice-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 21px;
+            padding-top: 6px;
+        }
+
+        .select-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 12px;
+        }
+
+        .form-divider {
+            margin: 0 0 40px;
+            border: 0;
+            border-top: 1px solid var(--c-divider);
+        }
+
+        .consent-group {
+            margin-bottom: 40px;
+        }
+
+        .consent-group .choice a {
+            color: var(--c-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .consent-group .choice a:hover {
+            color: var(--c-primary-dark);
+        }
+
+        /* ---- 4-6. 彈窗 ---- */
+        .html-lock {
+            overflow: hidden !important;
+        }
+
+        .modal {
+            box-sizing: border-box;
+            width: 670px;
+            max-width: calc(100% - 32px);
+            max-height: calc(100dvh - 32px);
+            margin: auto;
+            padding: 0;
+            color: var(--c-text, #182E2A);
+            background: #fff;
+            border: 1px solid #DDE2DD;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .modal[open] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal::backdrop {
+            background: rgba(6, 17, 18, 0.56);
+        }
+
+        .modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 32px 32px 0;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #173F35;
+        }
+
+        .modal-close {
+            flex: none;
+            display: grid;
+            place-items: center;
+            width: 32px;
+            height: 32px;
+            margin-right: -4px;
+            color: #28594C;
+            background: none;
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #173F35;
+        }
+
+        .modal-close:focus-visible {
+            outline: 2px solid #28594C;
+            outline-offset: 2px;
+        }
+
+        .modal-rule {
+            flex: none;
+            margin: 16px 32px 0;
+            border: 0;
+            border-top: 1px solid #DDE2DD;
+        }
+
+        .modal-body {
+            flex: 1 1 auto;
+            min-height: 0;
+            max-height: 350px;
+            margin: 12px 32px;
+            padding-right: 12px;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #182E2A;
+            scrollbar-width: thin;
+            scrollbar-color: #8EA39B #F1F3F1;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #F1F3F1;
+            border-radius: 3px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #8EA39B;
+            border-radius: 3px;
+        }
+
+        .modal-body p+p {
+            margin-top: 1.6em;
+        }
+
+        .modal-body a {
+            color: #28594C;
+            text-decoration: underline;
+        }
+
+        .modal-foot {
+            flex: none;
+            display: flex;
+            justify-content: center;
+            padding: 20px 32px 40px;
+        }
+
+        .modal-foot .submit-button {
+            width: 320px;
+            max-width: 100%;
+        }
+
+        .modal--alert {
+            width: 394px;
+        }
+
+        .modal--alert .modal-message {
+            padding: 48px 32px 40px;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+            color: #65746E;
+            white-space: pre-line;
+        }
+
+        .modal--alert .modal-foot {
+            padding: 0 32px 32px;
+        }
+
+        .modal--alert .modal-foot .submit-button {
+            width: 100%;
+        }
+
+
+        /* ==========================================================================
+           5. Loading Overlay
+           ========================================================================== */
+        .loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+
+            background: #000;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+
+        /* 淡出 */
+        .loading.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Loading 文字 */
+        .loading-text {
+            color: rgba(180, 230, 232, 0.75);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 5px;
+        }
+
+        /* 進度條 */
+        .progress {
+            width: 110px;
+            height: 1px;
+            background: rgba(100, 180, 185, 0.2);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 40%;
+            height: 100%;
+
+            background: linear-gradient(90deg,
+                    transparent,
+                    #37dce5,
+                    #b3ffff);
+
+            animation: progressMove 1.8s ease-in-out infinite;
+        }
+
+        /* 進度動畫 */
+        @keyframes progressMove {
+            from {
+                transform: translateX(-120%);
+            }
+
+            to {
+                transform: translateX(350%);
+            }
+        }
+
+        /* 減少動態效果 */
+        @media (prefers-reduced-motion: reduce) {
+            .progress-bar {
+                animation: none;
+                width: 100%;
+                opacity: 0.7;
+            }
+        }
+
+
+        /* ==========================================================================
+           6. 響應式設計 (Responsive Design)
+           ========================================================================== */
+
+        /* 手機直屏裝置 (<= 767px) */
+        @media (max-width: 767px) {
+
+            header {
+                position: relative;
+            }
+
+            .video-container {
+                min-height: auto;
+            }
+
+            #contact-section {
+                padding: 0;
+            }
+
+            #contact-container {
+                padding: 32px 24px;
+                border-radius: 0;
+                border: none;
+            }
+
+            #contact-container>p:first-child {
+                font-size: 32px;
+            }
+
+            /* 姓名 / 稱謂：直式排列 */
+            .name-row {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .radio-group {
+                min-height: 0;
+                padding-left: 0;
+            }
+
+            /* 手機號碼：滿版 */
+            .phone-row {
+                width: 100%;
+            }
+
+            /* 聯絡時間：2 x 2 對齊 */
+            .choice-group--grid {
+                display: grid;
+                grid-template-columns: 140px 1fr;
+                gap: 20px 0;
+            }
+
+            /* 縣市 / 營業所：上下排列 */
+            .select-row {
+                grid-template-columns: 1fr;
+            }
+
+            /* 彈窗 */
+            .modal-head {
+                padding: 24px 24px 0;
+            }
+
+            .modal-title {
+                font-size: 20px;
+            }
+
+            .modal-rule {
+                margin: 16px 24px 0;
+            }
+
+            .modal-body {
+                margin: 12px 24px;
+                max-height: 55dvh;
+                font-size: 15px;
+            }
+
+            .modal-foot {
+                padding: 16px 24px 28px;
+            }
+
+            .modal-foot .submit-button {
+                width: 100%;
+            }
+
+            .modal--alert .modal-message {
+                padding: 40px 24px 32px;
+            }
+
+            .modal--alert .modal-foot {
+                padding: 0 24px 24px;
+            }
+
+        }
+
+        /* 手機橫屏裝置 */
+        @media (max-width: 960px) and (orientation: landscape) and (max-height: 500px) {}
+
+        /* SE手機橫屏裝置 */
+        @media (max-width: 667px) and (orientation: landscape) and (max-height: 375px) {}
+    </style>
+
+
+    <!-- Loading Overlay -->
+    <div class="loading" id="loading">
+        <div class="loading-text">LOADING</div>
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-[100] bg-transparent transition-all duration-300 flex items-center">
+        <div class="block">
+            <a href="#" class="leading-none block transition-transform duration-300 hover:scale-105"
+                aria-label="NISSAN LOGO">
+                <span class="svg-mask svg-mask--logo" role="img" aria-label="NISSAN LOGO"></span>
+            </a>
+        </div>
+    </header>
+
+    <!-- TVC Section -->
+    <section id="tvc-section" class="w-full relative">
+        <div id="tvc-info" class="tvc-info">
+            <div class="video-container">
+                <video id="tvc-video" class="absolute top-0 left-0 w-full h-full object-cover z-[1]" autoplay muted playsinline preload="auto">
+                    <source src="./assets/video/1113.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-section" class="w-full relative bg-[#F7F6F2] flex items-center justify-center">
+        <div id="contact-container" class="text-center">
+            <p class="text-4xl font-bold text-[#173F35] mb-[10px]">購車諮詢</p>
+            <p class="text-sm text-[#65746E]">填寫您的聯繫資訊與感興趣車款，銷售顧問將於您方便的時間聯繫您。</p>
+            <hr class="my-6 border-[#DDE2DD]" />
+            <form id="contact-form" method="post"
+                action="https://docs.google.com/forms/d/e/1FAIpQLSd_eg3Pp9bJfD46lDAycL2wkK8pYTpHKlAlI1NrYpHI7IybbQ/formResponse"
+                novalidate>
+                <div class="form-group">
+                    <label for="name" class="form-label">姓名<span class="req" aria-hidden="true">*</span></label>
+                    <div class="name-row">
+                        <div class="field" data-field="name">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="請輸入姓名"
+                                autocomplete="name" maxlength="100" required aria-describedby="name-error">
+                            <p class="error-msg" id="name-error" role="alert">此為必填欄位</p>
+                        </div>
+                        <div class="radio-group" role="radiogroup" aria-label="稱謂">
+                            <label class="choice"><input type="radio" name="gender" value="先生" checked>先生</label>
+                            <label class="choice"><input type="radio" name="gender" value="小姐">小姐</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone1" class="form-label">手機號碼<span class="req" aria-hidden="true">*</span><span
+                            class="hint">請輸入可聯繫之手機號碼</span></label>
+                    <div class="field" data-field="phone">
+                        <div class="phone-row">
+                            <input type="tel" id="phone1" name="phone1" class="form-control phone-area"
+                                placeholder="手機前四碼" inputmode="numeric" maxlength="4" autocomplete="tel-national"
+                                required aria-describedby="phone-error">
+                            <span class="phone-sep" aria-hidden="true">-</span>
+                            <input type="tel" id="phone2" name="phone2" class="form-control phone-number"
+                                placeholder="手機後六碼" inputmode="numeric" maxlength="6" aria-label="手機後六碼" required
+                                aria-describedby="phone-error">
+                        </div>
+                        <p class="error-msg" id="phone-error" role="alert">此為必填欄位</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-label" id="label-models">興趣車款<span class="req" aria-hidden="true">*</span><span
+                            class="hint">可複選</span></span>
+                    <div class="field" data-field="models">
+                        <div class="choice-group" role="group" aria-labelledby="label-models">
+                            <label class="choice"><input type="checkbox" name="models" value="e-POWER QASHQAI">e-POWER
+                                QASHQAI</label>
+                            <label class="choice"><input type="checkbox" name="models" value="e-POWER X-TRAIL">e-POWER
+                                X-TRAIL</label>
+                        </div>
+                        <p class="error-msg" role="alert">此為必填欄位</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-label" id="label-times">聯絡時間<span class="req" aria-hidden="true">*</span><span
+                            class="hint">可複選</span></span>
+                    <div class="field" data-field="times">
+                        <div class="choice-group choice-group--grid" role="group" aria-labelledby="label-times">
+                            <label class="choice"><input type="checkbox" name="times"
+                                    value="8:00~12:00">8:00~12:00</label>
+                            <label class="choice"><input type="checkbox" name="times"
+                                    value="12:00~15:00">12:00~15:00</label>
+                            <label class="choice"><input type="checkbox" name="times"
+                                    value="15:00~18:00">15:00~18:00</label>
+                            <label class="choice"><input type="checkbox" name="times"
+                                    value="18:00~20:00">18:00~20:00</label>
+                        </div>
+                        <p class="error-msg" role="alert">此為必填欄位</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-label" id="label-location">聯繫據點<span class="req" aria-hidden="true">*</span><a
+                            href="#" id="branch-info-link" target="_blank" rel="noopener">查看各營業所詳細資訊</a></span>
+                    <div class="select-row" role="group" aria-labelledby="label-location">
+                        <div class="field" data-field="city">
+                            <select id="city" name="city" class="form-control" aria-label="選擇縣市" required
+                                aria-describedby="city-error">
+                                <option value="">選擇縣市</option>
+                            </select>
+                            <p class="error-msg" id="city-error" role="alert">此為必填欄位</p>
+                        </div>
+                        <div class="field" data-field="branch">
+                            <select id="branch" name="branch" class="form-control" aria-label="選擇營業所" required disabled
+                                aria-describedby="branch-error">
+                                <option value="">選擇營業所</option>
+                            </select>
+                            <p class="error-msg" id="branch-error" role="alert">此為必填欄位</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="form-divider" />
+                <div class="consent-group field" data-field="agree">
+                    <label class="choice">
+                        <input type="checkbox" id="agree" name="agree" value="1" required
+                            aria-describedby="agree-error">
+                        <span style="letter-spacing: 0;">我已閱讀並同意個資授權<a href="#privacy-modal" id="privacy-link"
+                                role="button" aria-haspopup="dialog">（個資授權告知事項）</a></span>
+                    </label>
+                    <p class="error-msg" id="agree-error" role="alert">請閱讀並同意個資授權</p>
+                </div>
+                <button type="submit" class="submit-button" id="submit-btn" disabled>
+                    確認送出
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <dialog id="privacy-modal" class="modal" aria-labelledby="privacy-title">
+        <div class="modal-head">
+            <h2 class="modal-title" id="privacy-title">個資授權告知事項</h2>
+            <button type="button" class="modal-close" data-close aria-label="關閉">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 4L20 20M20 4L4 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+        <hr class="modal-rule" />
+        <div class="modal-body" tabindex="0">
+            <p>網站保留一切法律權利。</p>
+            <p>對於您所登錄或留存之個人資料僅供主辦單位即裕隆日產汽車於本活動期間內就本活動之身分確認、滿意度調查、報名統計資料、行銷汽車或相關產品或服務、客戶管理、網路行為之調查或研究及其他合於裕隆日產汽車營業登記項目之業務活動範圍內為蒐集、處理及利用。您並同意裕隆日產汽車得將您所登錄或留存之個人資料提供予所屬經銷公司，於與前述目的類似之目的範圍內蒐集、處理及利用。<br>您就所提供之個人資料依法得行使查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用以及請求刪除等權利。
+            </p>
+            <p>您了解並同意上述事項為您接受裕隆日產汽車所提供或安排之各項服務之必要條件。您得自由選擇是否要接受裕隆日產汽車所提供或安排之各項服務。對於您所登錄或留存之個人資料，您同意接受裕隆日產汽車之「隱私權保護」聲明(請參閱「<a
+                    href="#" target="_blank" rel="noopener">裕隆日產汽車隱私權保護聲明</a>」)。</p>
+        </div>
+        <hr class="modal-rule" style="margin-top:0" />
+        <div class="modal-foot">
+            <button type="button" class="submit-button" data-close>我知道了</button>
+        </div>
+    </dialog>
+
+    <dialog id="alert-modal" class="modal modal--alert" aria-describedby="alert-message">
+        <p class="modal-message" id="alert-message"></p>
+        <div class="modal-foot">
+            <button type="button" class="submit-button" data-close>我知道了</button>
+        </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer class="w-full h-[75px] text-sm bg-[#E4E3DE] text-[#65746E] flex items-center justify-center">
+        © NISSAN TAIWAN.
+    </footer>
+
+    <script>
+
+        // 工具函式：Debounce 防抖
+        function debounce(func, wait = 100) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        /* ==========================================================================
+           1. DOM 事件監聽與邏輯控制
+           ========================================================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('loading');
+            if (overlay) {
+                let isFinished = false;
+                const hideLoading = () => {
+                    if (isFinished) return;
+                    isFinished = true;
+                    overlay.classList.add('fade-out');
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        if (overlay.parentNode) overlay.remove();
+                    }, 600);
+                };
+
+                if (document.readyState === 'complete') {
+                    hideLoading();
+                } else {
+                    window.addEventListener('load', hideLoading, { once: true });
+                }
+
+                setTimeout(hideLoading, 3000);
+            }
+
+            // 影片自動靜音與 IntersectionObserver 控管
+            const allVideos = document.querySelectorAll('video');
+
+            if (allVideos.length > 0 && 'IntersectionObserver' in window) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const video = entry.target;
+                        if (entry.isIntersecting) {
+                            if (video.dataset.src && !video.src) {
+                                video.src = video.dataset.src;
+                                video.load();
+                            }
+                            if (document.visibilityState === 'visible' && !video.ended) video.play().catch(() => { });
+                        } else {
+                            if (!video.paused) video.pause();
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                allVideos.forEach(v => videoObserver.observe(v));
+
+                document.addEventListener('visibilitychange', () => {
+                    allVideos.forEach(video => {
+                        if (document.hidden) {
+                            if (!video.paused) video.pause();
+                        } else {
+                            const rect = video.getBoundingClientRect();
+                            if (rect.top < window.innerHeight && rect.bottom > 0 && !video.ended) {
+                                video.play().catch(() => { });
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Additional: scroll/resize listener to ensure videos only play when actually visible
+            // This preserves the IntersectionObserver logic above but adds a debounced safeguard
+            // for environments where IO may be delayed or to further reduce data usage.
+            function isElementVisibleInViewport(el, threshold = 0.25) {
+                if (!el) return false;
+                const rect = el.getBoundingClientRect();
+                const vh = window.innerHeight || document.documentElement.clientHeight;
+                const vw = window.innerWidth || document.documentElement.clientWidth;
+
+                // Completely off-screen
+                if (rect.bottom <= 0 || rect.top >= vh || rect.right <= 0 || rect.left >= vw) return false;
+
+                // Compute visible area ratio (approx)
+                const visibleHeight = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+                const visibleWidth = Math.min(rect.right, vw) - Math.max(rect.left, 0);
+                const visibleArea = Math.max(0, visibleHeight) * Math.max(0, visibleWidth);
+                const totalArea = Math.max(1, rect.width * rect.height);
+                const ratio = visibleArea / totalArea;
+                return ratio >= threshold;
+            }
+
+            const evaluateVideosVisibility = debounce(() => {
+                allVideos.forEach(video => {
+                    try {
+                        const shouldBePlaying = isElementVisibleInViewport(video, 0.25) && document.visibilityState === 'visible' && !video.ended;
+                        if (shouldBePlaying) {
+                            // lazy-load src if needed (keep parity with IntersectionObserver behavior)
+                            if (video.dataset.src && !video.src) {
+                                video.src = video.dataset.src;
+                                video.load();
+                            }
+                            if (video.paused) video.play().catch(() => { });
+                        } else {
+                            if (!video.paused) video.pause();
+                        }
+                    } catch (e) {
+                        // ignore per-video errors
+                    }
+                });
+            }, 150);
+
+            // Attach listeners (passive where appropriate)
+            window.addEventListener('scroll', evaluateVideosVisibility, { passive: true });
+            window.addEventListener('resize', evaluateVideosVisibility);
+
+            // initial evaluation after small delay to allow layout to settle
+            setTimeout(evaluateVideosVisibility, 120);
+
+            // TVC 影片播放與結束控制（停在最後一幀）
+            const tvcVideo = document.getElementById('tvc-video');
+
+            if (tvcVideo) {
+
+                const tryPlayVideo = () => {
+                    if (tvcVideo.paused && !tvcVideo.ended) {
+                        tvcVideo.play().catch((err) => {
+                            console.warn('Autoplay prevented or waiting for interaction:', err);
+                        });
+                    }
+                };
+
+                if (tvcVideo.readyState >= 2) {
+                    tryPlayVideo();
+                } else {
+                    tvcVideo.addEventListener('canplay', tryPlayVideo, { once: true });
+                    tvcVideo.addEventListener('loadedmetadata', tryPlayVideo, { once: true });
+                }
+
+                const onFirstInteraction = () => {
+                    tryPlayVideo();
+                    window.removeEventListener('click', onFirstInteraction);
+                    window.removeEventListener('touchstart', onFirstInteraction);
+                };
+                window.addEventListener('click', onFirstInteraction, { once: true });
+                window.addEventListener('touchstart', onFirstInteraction, { once: true });
+
+                const unmuteOnFirstInteraction = () => {
+                    tvcVideo.muted = false;
+                    tvcVideo.play().catch(() => {});
+                };
+
+                ['pointerdown', 'touchend', 'keydown'].forEach(evt =>
+                    window.addEventListener(evt, unmuteOnFirstInteraction, { once: true })
+                );
+
+                tvcVideo.addEventListener('ended', () => {
+                    tvcVideo.pause();
+
+                    const isDesktop = window.innerWidth >= 768;
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection && isDesktop) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+
+        /* ==========================================================================
+           2. 購車諮詢表單 (#contact-form)
+           ========================================================================== */
+        (function () {
+            const form = document.getElementById('contact-form');
+            if (!form) return;
+
+            /* ---------- 縣市 / 營業所資料 ---------- */
+            const BRANCHES = {
+                '基隆市': ['基隆營業所'],
+                '台北市': ['北投營業所', '民權營業所', '濱江營業所'],
+                '新北市': [
+                    '中和營業所', '三重營業所', '林口營業所', '輔大營業所',
+                    '新莊營業所', '新店營業所', '土城營業所', '汐止營業所',
+                    '淡水營業所'
+                ],
+                '桃園市': [
+                    '桃園營業所', '八德營業所', '桃鶯營業所', '楊梅營業所',
+                    '平鎮營業所', '北中壢營業所'
+                ],
+                '新竹市': ['新竹營業所'],
+                '新竹縣': ['竹北營業所', '竹東營業所'],
+                '苗栗縣': ['苗栗營業所', '頭份營業所'],
+                '台中市': [
+                    '北台中營業所', '南台中營業所', '大里營業所', '五權西路營業所',
+                    '沙鹿營業所', '太平營業所', '豐原營業所', '松竹營業所'
+                ],
+                '彰化縣': ['彰化營業所', '員林營業所', '溪湖營業所'],
+                '南投縣': ['南投營業所'],
+                '雲林縣': ['斗南營業所'],
+                '嘉義市': ['博賢營業所', '忠孝營業所'],
+                '台南市': [
+                    '健康營業所', '永康營業所', '新營營業所', '太子營業所',
+                    '善化營業所'
+                ],
+                '高雄市': [
+                    '陽明營業所', '岡山營業所', '大中營業所', '一心營業所',
+                    '鳳山營業所'
+                ],
+                '屏東縣': ['和生營業所', '潮州營業所'],
+                '宜蘭縣': ['宜蘭營業所'],
+                '花蓮縣': ['花蓮營業所'],
+                '台東縣': ['台東營業所']
+            };
+
+            const el = {
+                name: form.elements['name'],
+                phone1: form.elements['phone1'],
+                phone2: form.elements['phone2'],
+                city: form.elements['city'],
+                branch: form.elements['branch'],
+                agree: form.elements['agree'],
+                submit: document.getElementById('submit-btn')
+            };
+
+            /* ---------- 工具 ---------- */
+            const fieldOf = (key) => form.querySelector('[data-field="' + key + '"]');
+
+            function setError(key, message) {
+                const field = fieldOf(key);
+                if (!field) return;
+                const msg = field.querySelector('.error-msg');
+                if (message && msg) msg.textContent = message;
+                field.classList.add('has-error');
+                field.querySelectorAll('input:not([type=checkbox]):not([type=radio]), select').forEach(i => i.setAttribute('aria-invalid', 'true'));
+            }
+
+            function clearError(key) {
+                const field = fieldOf(key);
+                if (!field) return;
+                field.classList.remove('has-error');
+                field.querySelectorAll('[aria-invalid]').forEach(i => i.removeAttribute('aria-invalid'));
+            }
+
+            /* ---------- 縣市 → 營業所連動 ---------- */
+            Object.keys(BRANCHES).forEach(city => el.city.add(new Option(city, city)));
+
+            el.city.addEventListener('change', () => {
+                const list = BRANCHES[el.city.value] || [];
+                el.branch.length = 1; // 保留「選擇營業所」
+                list.forEach(b => el.branch.add(new Option(b, b)));
+                el.branch.value = '';
+                el.branch.disabled = list.length === 0;
+                clearError('city');
+                clearError('branch');
+                updateSubmitState();
+            });
+
+            /* ---------- 即時檢查所有欄位狀態並控制按鈕啟用/禁用 ---------- */
+            function isFormValid() {
+                const nameVal = el.name.value.trim();
+                if (!nameVal || nameVal.length > 100) return false;
+                const p1 = el.phone1.value.trim();
+                const p2 = el.phone2.value.trim();
+                if (!/^0\d{3}$/.test(p1) || !/^\d{6}$/.test(p2)) return false;
+                if (!form.querySelector('input[name="models"]:checked')) return false;
+                if (!form.querySelector('input[name="times"]:checked')) return false;
+                if (!el.city.value || !el.branch.value) return false;
+                if (!el.agree.checked) return false;
+
+                return true;
+            }
+
+            function updateSubmitState() {
+                if (el.submit) {
+                    el.submit.disabled = !isFormValid();
+                }
+            }
+
+            el.name.addEventListener('input', () => {
+                if (el.name.value.length > 100) {
+                    el.name.value = el.name.value.slice(0, 100);
+                }
+                clearError('name');
+                updateSubmitState();
+            });
+
+            el.phone1.addEventListener('input', () => {
+                let val = el.phone1.value.replace(/\D/g, '');
+                if (val.length > 0 && !val.startsWith('0')) {
+                    const firstZeroIndex = val.indexOf('0');
+                    val = firstZeroIndex !== -1 ? val.slice(firstZeroIndex) : '';
+                }
+                if (val.length > 4) val = val.slice(0, 4);
+                el.phone1.value = val;
+
+                clearError('phone');
+                updateSubmitState();
+                if (val.length === 4) {
+                    el.phone2.focus();
+                }
+            });
+
+            el.phone2.addEventListener('input', () => {
+                let val = el.phone2.value.replace(/\D/g, '');
+                if (val.length > 6) val = val.slice(0, 6);
+                el.phone2.value = val;
+
+                clearError('phone');
+                updateSubmitState();
+            });
+
+            el.branch.addEventListener('change', () => {
+                clearError('branch');
+                updateSubmitState();
+            });
+
+            form.querySelectorAll('input[name="models"]').forEach(i => i.addEventListener('change', () => {
+                clearError('models');
+                updateSubmitState();
+            }));
+
+            form.querySelectorAll('input[name="times"]').forEach(i => i.addEventListener('change', () => {
+                clearError('times');
+                updateSubmitState();
+            }));
+
+            el.agree.addEventListener('change', () => {
+                clearError('agree');
+                updateSubmitState();
+            });
+
+            updateSubmitState();
+
+            /* ---------- 驗證 ---------- */
+            function validate() {
+                const errors = []; // [key, focusTarget, msg]
+
+                const nameVal = el.name.value.trim();
+                if (!nameVal) {
+                    errors.push(['name', el.name, '此為必填欄位']);
+                } else if (nameVal.length > 100) {
+                    errors.push(['name', el.name, '姓名不可超過100字']);
+                }
+
+                const p1 = el.phone1.value.trim();
+                const p2 = el.phone2.value.trim();
+                if (!p1 || !p2) {
+                    errors.push(['phone', !p1 ? el.phone1 : el.phone2, '此為必填欄位']);
+                } else if (!/^0\d{3}$/.test(p1) || !/^\d{6}$/.test(p2)) {
+                    errors.push(['phone', !/^0\d{3}$/.test(p1) ? el.phone1 : el.phone2, '請輸入正確的手機號碼（前4碼需為0開頭，後6碼為數字）']);
+                }
+
+                if (!form.querySelector('input[name="models"]:checked'))
+                    errors.push(['models', form.querySelector('input[name="models"]'), '此為必填欄位']);
+                if (!form.querySelector('input[name="times"]:checked'))
+                    errors.push(['times', form.querySelector('input[name="times"]'), '此為必填欄位']);
+                if (!el.city.value) errors.push(['city', el.city, '此為必填欄位']);
+                else if (!el.branch.value) errors.push(['branch', el.branch, '此為必填欄位']);
+                if (!el.agree.checked) errors.push(['agree', el.agree, '請閱讀並同意個資授權']);
+
+                ['name', 'phone', 'models', 'times', 'city', 'branch', 'agree'].forEach(clearError);
+                errors.forEach(([key, , msg]) => setError(key, msg));
+
+                if (errors.length) {
+                    const target = errors[0][1];
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    target.focus({ preventScroll: true });
+                }
+                return errors.length === 0;
+            }
+
+            /* ---------- 彈窗 ---------- */
+            const root = document.documentElement;
+            let lastTrigger = null;
+
+            function openModal(dialog, trigger) {
+                lastTrigger = trigger || document.activeElement;
+                dialog.showModal();
+                root.classList.add('html-lock');
+            }
+
+            function closeModal(dialog) {
+                if (dialog.open) dialog.close();
+            }
+
+            document.querySelectorAll('dialog.modal').forEach(dialog => {
+                dialog.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', () => closeModal(dialog)));
+                dialog.addEventListener('click', (e) => { if (e.target === dialog) closeModal(dialog); });
+                dialog.addEventListener('close', () => {
+                    if (!document.querySelector('dialog.modal[open]')) root.classList.remove('html-lock');
+                    if (lastTrigger && document.contains(lastTrigger)) lastTrigger.focus({ preventScroll: true });
+                });
+            });
+
+            const privacyModal = document.getElementById('privacy-modal');
+            const alertModal = document.getElementById('alert-modal');
+
+            document.getElementById('privacy-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(privacyModal, e.currentTarget);
+            });
+
+            function showAlert(message) {
+                document.getElementById('alert-message').textContent = message;
+                openModal(alertModal, el.submit);
+            }
+
+            /* ---------- 送出 ---------- */
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                if (!validate()) return;
+
+                const data = new FormData(form);
+
+                ['models', 'times'].forEach(fieldName => {
+                    const checkedValues = Array.from(form.querySelectorAll(`input[name="${fieldName}"]:checked`)).map(i => i.value);
+                    data.set(fieldName, checkedValues.join('、'));
+                });
+
+                el.submit.disabled = true;
+                try {
+
+                    const sheetData = new FormData();
+                    sheetData.append('entry.882057871', data.get('name'));
+                    sheetData.append('entry.1228242096', data.get('gender'));
+                    sheetData.append('entry.199210044', data.get('phone1') + data.get('phone2'));
+                    sheetData.append('entry.1404847317', data.get('models'));
+                    sheetData.append('entry.610181726', data.get('times'));
+                    sheetData.append('entry.19051359', data.get('city') + ' ' + data.get('branch'));
+
+
+                    const res = await fetch(form.getAttribute('action') || '/', { method: 'POST', body: sheetData });
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    form.reset();
+                    el.branch.length = 1;
+                    el.branch.disabled = true;
+                    updateSubmitState();
+                    showAlert('您的諮詢單已傳送！<br>銷售顧問將於您方便的時間聯繫您。');
+                } catch (err) {
+                    console.warn('Form submit failed:', err);
+                    showAlert('送出失敗，請稍後再試！');
+                } finally {
+                    updateSubmitState();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
