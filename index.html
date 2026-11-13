@@ -1035,6 +1035,15 @@
                 window.addEventListener('click', onFirstInteraction, { once: true });
                 window.addEventListener('touchstart', onFirstInteraction, { once: true });
 
+                const unmuteOnFirstInteraction = () => {
+                    tvcVideo.muted = false;
+                    tvcVideo.play().catch(() => {});
+                };
+
+                ['pointerdown', 'touchend', 'keydown'].forEach(evt =>
+                    window.addEventListener(evt, unmuteOnFirstInteraction, { once: true })
+                );
+
                 tvcVideo.addEventListener('ended', () => {
                     tvcVideo.pause();
 
