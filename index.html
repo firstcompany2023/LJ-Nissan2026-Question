@@ -21,7 +21,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./assets/js/tailwindcss.js"></script>
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <!-- <version>2026111300000001</version> -->
+    <!-- <version>2026111300000002</version> -->
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WT473T');</script>
+    <!-- End Google Tag Manager -->
+
 </head>
 
 <body>
@@ -112,7 +124,7 @@
             border-radius: 6px;
             cursor: pointer;
             width: 100%;
-            background-image: url(./assets/img/icon/btn-bg.svg);
+            background-image: url(./assets/img/icon/btn-bg.jpg);
             background-position: center center;
             background-size: cover;
             backdrop-filter: blur(20px);
@@ -620,6 +632,17 @@
            6. 響應式設計 (Responsive Design)
            ========================================================================== */
 
+        /* 平板直屏裝置 */
+        @media (min-width: 768px) and (max-width: 1199px) and (orientation: portrait) {
+            .video-container {
+                min-height: auto;
+            }
+
+            #contact-container {
+                max-width: 768px;
+            }
+        }
+
         /* 手機直屏裝置 (<= 767px) */
         @media (max-width: 767px) {
 
@@ -717,6 +740,10 @@
         @media (max-width: 667px) and (orientation: landscape) and (max-height: 375px) {}
     </style>
 
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT473T" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Loading Overlay -->
     <div class="loading" id="loading">
@@ -729,8 +756,8 @@
     <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-[100] bg-transparent transition-all duration-300 flex items-center">
         <div class="block">
-            <a href="#" class="leading-none block transition-transform duration-300 hover:scale-105"
-                aria-label="NISSAN LOGO">
+            <a href="https://new.nissan.com.tw/nissan"
+                class="leading-none block transition-transform duration-300 hover:scale-105" aria-label="NISSAN LOGO">
                 <span class="svg-mask svg-mask--logo" role="img" aria-label="NISSAN LOGO"></span>
             </a>
         </div>
@@ -740,7 +767,8 @@
     <section id="tvc-section" class="w-full relative">
         <div id="tvc-info" class="tvc-info">
             <div class="video-container">
-                <video id="tvc-video" class="absolute top-0 left-0 w-full h-full object-cover z-[1]" autoplay muted playsinline preload="auto">
+                <video id="tvc-video" class="absolute top-0 left-0 w-full h-full object-cover z-[1]" autoplay muted
+                    playsinline preload="auto">
                     <source src="./assets/video/1113.mp4" type="video/mp4">
                 </video>
             </div>
@@ -763,9 +791,12 @@
                                 autocomplete="name" maxlength="100" required aria-describedby="name-error">
                             <p class="error-msg" id="name-error" role="alert">此為必填欄位</p>
                         </div>
-                        <div class="radio-group" role="radiogroup" aria-label="稱謂">
-                            <label class="choice"><input type="radio" name="gender" value="先生" checked>先生</label>
-                            <label class="choice"><input type="radio" name="gender" value="小姐">小姐</label>
+                        <div class="field" data-field="gender">
+                            <div class="radio-group" role="radiogroup" aria-label="稱謂">
+                                <label class="choice"><input type="radio" name="gender" value="先生" required>先生</label>
+                                <label class="choice"><input type="radio" name="gender" value="小姐">小姐</label>
+                            </div>
+                            <p class="error-msg" id="gender-error" role="alert">此為必填欄位</p>
                         </div>
                     </div>
                 </div>
@@ -817,7 +848,8 @@
                 </div>
                 <div class="form-group">
                     <span class="form-label" id="label-location">聯繫據點<span class="req" aria-hidden="true">*</span><a
-                            href="https://new.nissan.com.tw/nissan/owners/services/locations/sales" id="branch-info-link" target="_blank" rel="noopener">查看各營業所詳細資訊</a></span>
+                            href="https://new.nissan.com.tw/nissan/owners/services/locations/sales"
+                            id="branch-info-link" target="_blank" rel="noopener">查看各營業所詳細資訊</a></span>
                     <div class="select-row" role="group" aria-labelledby="label-location">
                         <div class="field" data-field="city">
                             <select id="city" name="city" class="form-control" aria-label="選擇縣市" required
@@ -863,11 +895,13 @@
         </div>
         <hr class="modal-rule" />
         <div class="modal-body" tabindex="0">
-            <p>網站保留一切法律權利。</p>
-            <p>對於您所登錄或留存之個人資料僅供主辦單位即裕隆日產汽車於本活動期間內就本活動之身分確認、滿意度調查、報名統計資料、行銷汽車或相關產品或服務、客戶管理、網路行為之調查或研究及其他合於裕隆日產汽車營業登記項目之業務活動範圍內為蒐集、處理及利用。您並同意裕隆日產汽車得將您所登錄或留存之個人資料提供予所屬經銷公司，於與前述目的類似之目的範圍內蒐集、處理及利用。<br>您就所提供之個人資料依法得行使查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用以及請求刪除等權利。
+            <p>本活動要求所有參與購車諮詢者，應填入本人真實之資料，如有替他人預約者，應事先取得他人之授權或同意使用個資。敬請自律，以免違反個資法而涉及法律責任；本網站保留一切法律權利。</p>
+            <p>對於您所登錄或留存之個人資料僅供主辦單位即裕隆日產汽車於本活動期間內就本活動之身分確認、滿意度調查、報名統計資料、行銷汽車或相關產品或服務、客戶管理、網路行為之調查或研究及其他合於裕隆日產汽車營業登記項目之業務活動範圍內為蒐集、處理及利用。您並同意裕隆日產汽車得將您所登錄或留存之個人資料提供予所屬經銷公司，於與前述目的類似之目的範圍內蒐集、處理及利用。
+                您就所提供之個人資料依法得行使查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用以及請求刪除等權利。
             </p>
             <p>您了解並同意上述事項為您接受裕隆日產汽車所提供或安排之各項服務之必要條件。您得自由選擇是否要接受裕隆日產汽車所提供或安排之各項服務。對於您所登錄或留存之個人資料，您同意接受裕隆日產汽車之「隱私權保護」聲明(請參閱「<a
-                    href="https://new.nissan.com.tw/nissan/info/privacy?a0v5la7bquf89=aec6f4526aa8f2b96a818d3eff4bec40&uy3ubftvh0u6o8=20e8669cf6662bf85b24853bfa21bb6b&xnfrr0ncac=&cc4d76fdaf5=&_gl=1*18t01aa*_gcl_aw*R0NMLjE3ODg0MzEwMDguQ2owS0NRandnNXpUQmhDTEFSSXNBUDJBRlU0T1o3TW1zQ1puT29aZDdidF9SMHhYc2pqWWowY1ItdTRHa21oZVRtb0JKckEtSEQzS3dUQWFBaUtTRUFMd193Y0I.*_gcl_au*MjEwOTc3MTMzNy4xNzkyMTE1MzEwLi0uLS4xNzkyMTI3NDI1LjE5NDIyOTk1MzkuMTc5NDMxMjk5MC4xNzk0MzkwNjgx*_ga*NDE5MjI3NTM0LjE3ODQyODEwMTA.*_ga_MCZZN9G6P2*czE3OTQzOTA2NDMkbzk3JGcxJHQxNzk0MzkxNTMyJGo2MCRsMCRoMA..*_ga_MJ9SQE6DW6*czE3OTQzOTA2NDMkbzQkZzEkdDE3OTQzOTE1MzMkajYwJGwwJGgw" target="_blank" rel="noopener">裕隆日產汽車隱私權保護聲明</a>」)。</p>
+                    href="https://new.nissan.com.tw/nissan/info/privacy?a0v5la7bquf89=aec6f4526aa8f2b96a818d3eff4bec40&uy3ubftvh0u6o8=20e8669cf6662bf85b24853bfa21bb6b&xnfrr0ncac=&cc4d76fdaf5=&_gl=1*18t01aa*_gcl_aw*R0NMLjE3ODg0MzEwMDguQ2owS0NRandnNXpUQmhDTEFSSXNBUDJBRlU0T1o3TW1zQ1puT29aZDdidF9SMHhYc2pqWWowY1ItdTRHa21oZVRtb0JKckEtSEQzS3dUQWFBaUtTRUFMd193Y0I.*_gcl_au*MjEwOTc3MTMzNy4xNzkyMTE1MzEwLi0uLS4xNzkyMTI3NDI1LjE5NDIyOTk1MzkuMTc5NDMxMjk5MC4xNzk0MzkwNjgx*_ga*NDE5MjI3NTM0LjE3ODQyODEwMTA.*_ga_MCZZN9G6P2*czE3OTQzOTA2NDMkbzk3JGcxJHQxNzk0MzkxNTMyJGo2MCRsMCRoMA..*_ga_MJ9SQE6DW6*czE3OTQzOTA2NDMkbzQkZzEkdDE3OTQzOTE1MzMkajYwJGwwJGgw"
+                    target="_blank" rel="noopener">裕隆日產汽車隱私權保護聲明</a>」)。</p>
         </div>
         <hr class="modal-rule" style="margin-top:0" />
         <div class="modal-foot">
@@ -1037,7 +1071,7 @@
 
                 const unmuteOnFirstInteraction = () => {
                     tvcVideo.muted = false;
-                    tvcVideo.play().catch(() => {});
+                    tvcVideo.play().catch(() => { });
                 };
 
                 ['pointerdown', 'touchend', 'keydown'].forEach(evt =>
@@ -1047,7 +1081,7 @@
                 tvcVideo.addEventListener('ended', () => {
                     tvcVideo.pause();
 
-                    const isDesktop = window.innerWidth >= 768;
+                    const isDesktop = window.innerWidth > 1440;
                     const contactSection = document.getElementById('contact-section');
                     if (contactSection && isDesktop) {
                         contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -1145,9 +1179,12 @@
             });
 
             /* ---------- 即時檢查所有欄位狀態並控制按鈕啟用/禁用 ---------- */
+            const NAME_REGEX = /^[\u4e00-\u9fa5a-zA-Z\s·•.]+$/;
+
             function isFormValid() {
                 const nameVal = el.name.value.trim();
-                if (!nameVal || nameVal.length > 100) return false;
+                if (!nameVal || nameVal.length > 100 || !NAME_REGEX.test(nameVal)) return false;
+                if (!form.querySelector('input[name="gender"]:checked')) return false;
                 const p1 = el.phone1.value.trim();
                 const p2 = el.phone2.value.trim();
                 if (!/^0\d{3}$/.test(p1) || !/^\d{6}$/.test(p2)) return false;
@@ -1166,6 +1203,8 @@
             }
 
             el.name.addEventListener('input', () => {
+                // 防呆：即時過濾特殊符號、數字與 Emoji，僅允許中文、英文字母、空格與常見姓名間隔點
+                el.name.value = el.name.value.replace(/[^\u4e00-\u9fa5a-zA-Z\s·•.]/g, '');
                 if (el.name.value.length > 100) {
                     el.name.value = el.name.value.slice(0, 100);
                 }
@@ -1203,6 +1242,11 @@
                 updateSubmitState();
             });
 
+            form.querySelectorAll('input[name="gender"]').forEach(i => i.addEventListener('change', () => {
+                clearError('gender');
+                updateSubmitState();
+            }));
+
             form.querySelectorAll('input[name="models"]').forEach(i => i.addEventListener('change', () => {
                 clearError('models');
                 updateSubmitState();
@@ -1229,7 +1273,12 @@
                     errors.push(['name', el.name, '此為必填欄位']);
                 } else if (nameVal.length > 100) {
                     errors.push(['name', el.name, '姓名不可超過100字']);
+                } else if (!NAME_REGEX.test(nameVal)) {
+                    errors.push(['name', el.name, '姓名不可包含特殊符號或數字']);
                 }
+
+                if (!form.querySelector('input[name="gender"]:checked'))
+                    errors.push(['gender', form.querySelector('input[name="gender"]'), '此為必填欄位']);
 
                 const p1 = el.phone1.value.trim();
                 const p2 = el.phone2.value.trim();
@@ -1247,7 +1296,7 @@
                 else if (!el.branch.value) errors.push(['branch', el.branch, '此為必填欄位']);
                 if (!el.agree.checked) errors.push(['agree', el.agree, '請閱讀並同意個資授權']);
 
-                ['name', 'phone', 'models', 'times', 'city', 'branch', 'agree'].forEach(clearError);
+                ['name', 'gender', 'phone', 'models', 'times', 'city', 'branch', 'agree'].forEach(clearError);
                 errors.forEach(([key, , msg]) => setError(key, msg));
 
                 if (errors.length) {
