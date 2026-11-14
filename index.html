@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NISSAN</title>
-    <meta name="description" content="NISSAN ">
+    <title>NISSAN QASHQAI｜ 即將登台</title>
+    <meta name="description" content="Q is Coming！將於 2026/12/8 答案正式揭曉，帶來超乎想像的全新駕馭體驗！立即登記，搶先掌握第一手消息！">
     <link rel="icon" href="./assets/img/favicon/favicon.ico" sizes="any">
     <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="NISSAN" />
-    <meta property="og:description" content="NISSAN " />
+    <meta property="og:title" content="NISSAN QASHQAI｜ 即將登台" />
+    <meta property="og:description" content="Q is Coming！將於 2026/12/8 答案正式揭曉，帶來超乎想像的全新駕馭體驗！立即登記，搶先掌握第一手消息！" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image" content="./assets/img/favicon/fb.jpg" />
@@ -1202,12 +1202,30 @@
                 }
             }
 
-            el.name.addEventListener('input', () => {
-                // 防呆：即時過濾特殊符號、數字與 Emoji，僅允許中文、英文字母、空格與常見姓名間隔點
-                el.name.value = el.name.value.replace(/[^\u4e00-\u9fa5a-zA-Z\s·•.]/g, '');
-                if (el.name.value.length > 100) {
-                    el.name.value = el.name.value.slice(0, 100);
-                }
+            let isComposing = false;
+
+            const sanitizeName = () => {
+                const raw = el.name.value;
+                const cleaned = raw
+                    .replace(/[^\u4e00-\u9fa5a-zA-Z\s·•.]/g, '')
+                    .slice(0, 100);
+                if (cleaned !== raw) el.name.value = cleaned;
+            };
+
+            el.name.addEventListener('compositionstart', () => {
+                isComposing = true;
+            });
+
+            el.name.addEventListener('compositionend', () => {
+                isComposing = false;
+                sanitizeName();
+                clearError('name');
+                updateSubmitState();
+            });
+
+            el.name.addEventListener('input', (e) => {
+                if (isComposing || e.isComposing) return;
+                sanitizeName();
                 clearError('name');
                 updateSubmitState();
             });
